@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="685b388a235946a89c18e2b71897e8e3" Name="Diagram1">
+        <EntityTypeShape EntityType="VovksStudentModel.admpost_all" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.cathedra" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.cathedra_type" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.faculty_all" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.faculty_type_all" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.nagruzka_all" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.nagruzka_calc" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.nagruzka_details" Width="1.5" PointX="7.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.nagruzka_norm" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.nagruzka_other" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.nagruzka_type" Width="1.5" PointX="5.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.post_all" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.semester_all" Width="1.5" PointX="6" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.teachers" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="VovksStudentModel.FK_cathedra_cathedra_type" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_teachers_cathedra" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_faculty_all_faculty_type_all" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_all_faculty_all" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_details_faculty_all" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_other_faculty_all" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_teachers_faculty_all" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_all_semester_all" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_type_nagruzka_calc" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_details_nagruzka_norm" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_details_nagruzka_type" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_details_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_nagruzka_other_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="VovksStudentModel.FK_teachers_post_all" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

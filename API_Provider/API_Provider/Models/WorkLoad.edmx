@@ -1,0 +1,1242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VovksStudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admpost_all">
+          <Key>
+            <PropertyRef Name="admpost_id" />
+          </Key>
+          <Property Name="admpost_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cathedra">
+          <Key>
+            <PropertyRef Name="cathedra_id" />
+          </Key>
+          <Property Name="cathedra_id" Type="int" Nullable="false" />
+          <Property Name="faculty_id" Type="int" Nullable="false" />
+          <Property Name="nameshort" Type="nvarchar(max)" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cathedra_type_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cathedra_type">
+          <Key>
+            <PropertyRef Name="cathedra_type_id" />
+          </Key>
+          <Property Name="cathedra_type_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="faculty_all">
+          <Key>
+            <PropertyRef Name="faculty_id" />
+          </Key>
+          <Property Name="faculty_id" Type="int" Nullable="false" />
+          <Property Name="faculty_type_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="faculty_type_all">
+          <Key>
+            <PropertyRef Name="faculty_type_id" />
+          </Key>
+          <Property Name="faculty_type_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nagruzka_all">
+          <Key>
+            <PropertyRef Name="nagruzka_id" />
+          </Key>
+          <Property Name="nagruzka_id" Type="int" Nullable="false" />
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="zayavka_id" Type="int" Nullable="false" />
+          <Property Name="faculty_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kurs_id" Type="int" Nullable="false" />
+          <Property Name="type_form_id" Type="int" Nullable="false" />
+          <Property Name="specialization_id" Type="int" Nullable="false" />
+          <Property Name="semester_id" Type="int" Nullable="false" />
+          <Property Name="lec" Type="int" Nullable="false" />
+          <Property Name="sem" Type="int" Nullable="false" />
+          <Property Name="lab" Type="int" Nullable="false" />
+          <Property Name="kons" Type="int" Nullable="false" />
+          <Property Name="exam" Type="int" Nullable="false" />
+          <Property Name="zal" Type="int" Nullable="false" />
+          <Property Name="reyt" Type="int" Nullable="false" />
+          <Property Name="kurs" Type="int" Nullable="false" />
+          <Property Name="sam" Type="int" Nullable="false" />
+          <Property Name="nazva1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hours1" Type="int" Nullable="false" />
+          <Property Name="nazva2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hours2" Type="int" Nullable="false" />
+          <Property Name="nazva3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hours3" Type="int" Nullable="false" />
+          <Property Name="nazva4" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hours4" Type="int" Nullable="false" />
+          <Property Name="nazva5" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hours5" Type="int" Nullable="false" />
+          <Property Name="potok" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tofaculty_id" Type="int" Nullable="false" />
+          <Property Name="prac" Type="int" Nullable="false" />
+          <Property Name="pot_kons" Type="int" Nullable="false" />
+          <Property Name="mod_kontr" Type="int" Nullable="false" />
+          <Property Name="credit" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="students" Type="int" Nullable="false" />
+          <Property Name="potok_gr" Type="int" Nullable="false" />
+          <Property Name="subgroup" Type="int" Nullable="false" />
+          <Property Name="plan_hours" Type="int" Nullable="false" />
+          <Property Name="labgroup" Type="int" Nullable="false" />
+          <Property Name="lec_inyaz" Type="int" Nullable="false" />
+          <Property Name="exam_usno" Type="int" Nullable="false" />
+          <Property Name="zal_usno" Type="int" Nullable="false" />
+          <Property Name="roz_graph" Type="int" Nullable="false" />
+          <Property Name="mod_calloc" Type="int" Nullable="false" />
+          <Property Name="sam10" Type="int" Nullable="false" />
+          <Property Name="pragroup" Type="int" Nullable="false" />
+          <Property Name="mod_kon_num" Type="int" Nullable="false" />
+          <Property Name="roz_gra_num" Type="int" Nullable="false" />
+          <Property Name="mod_cal_num" Type="int" Nullable="false" />
+          <Property Name="acadgroup" Type="int" Nullable="false" />
+          <Property Name="pidgroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nagruzka_calc">
+          <Key>
+            <PropertyRef Name="nagruzka_calc_id" />
+          </Key>
+          <Property Name="nagruzka_calc_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nagruzka_details">
+          <Key>
+            <PropertyRef Name="nagruzka_detail_id" />
+          </Key>
+          <Property Name="nagruzka_detail_id" Type="int" Nullable="false" />
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="nagruzka_year" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="faculty_id" Type="int" Nullable="false" />
+          <Property Name="hours" Type="int" Nullable="false" />
+          <Property Name="nagruzka_type_id" Type="int" Nullable="false" />
+          <Property Name="atfaculty_id" Type="int" />
+          <Property Name="kurs_id" Type="int" />
+          <Property Name="form_id" Type="int" />
+          <Property Name="specialty_id" Type="int" />
+          <Property Name="groups" Type="int" />
+          <Property Name="persons" Type="int" />
+          <Property Name="nagruzka_norm_id" Type="int" />
+          <Property Name="qty" Type="int" />
+          <Property Name="potok" Type="int" />
+        </EntityType>
+        <EntityType Name="nagruzka_norm">
+          <Key>
+            <PropertyRef Name="nagruzka_norm_id" />
+          </Key>
+          <Property Name="nagruzka_norm_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nagruzka_other">
+          <Key>
+            <PropertyRef Name="nagruzka_other_id" />
+          </Key>
+          <Property Name="nagruzka_other_id" Type="int" Nullable="false" />
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="dek" Type="int" Nullable="false" />
+          <Property Name="dip_b" Type="int" Nullable="false" />
+          <Property Name="dip_s" Type="int" Nullable="false" />
+          <Property Name="dip_m" Type="int" Nullable="false" />
+          <Property Name="prym_kom" Type="int" Nullable="false" />
+          <Property Name="prakt_dipl" Type="int" Nullable="false" />
+          <Property Name="aspir" Type="int" Nullable="false" />
+          <Property Name="prakt_vyr" Type="int" Nullable="false" />
+          <Property Name="prakt_ped" Type="int" Nullable="false" />
+          <Property Name="prakt_nav" Type="int" Nullable="false" />
+          <Property Name="mpos" Type="int" Nullable="false" />
+          <Property Name="kontr_vydv" Type="int" Nullable="false" />
+          <Property Name="faculty_id" Type="int" Nullable="false" />
+          <Property Name="org_pr" Type="int" Nullable="false" />
+          <Property Name="spec_rada" Type="int" Nullable="false" />
+          <Property Name="conference" Type="int" Nullable="false" />
+          <Property Name="method_rada" Type="int" Nullable="false" />
+          <Property Name="method_mon" Type="int" Nullable="false" />
+          <Property Name="method_vak" Type="int" Nullable="false" />
+          <Property Name="method_dak" Type="int" Nullable="false" />
+          <Property Name="science_secr" Type="int" Nullable="false" />
+          <Property Name="kurator" Type="int" Nullable="false" />
+          <Property Name="dip_bz" Type="int" Nullable="false" />
+          <Property Name="dip_sz" Type="int" Nullable="false" />
+          <Property Name="dip_mz" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nagruzka_type">
+          <Key>
+            <PropertyRef Name="nagruzka_type_id" />
+          </Key>
+          <Property Name="nagruzka_type_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="has_faculty" Type="int" />
+          <Property Name="has_kurs" Type="int" />
+          <Property Name="has_form" Type="int" />
+          <Property Name="has_specialty" Type="int" />
+          <Property Name="has_groups" Type="int" />
+          <Property Name="has_persons" Type="int" />
+          <Property Name="has_norm" Type="int" />
+          <Property Name="has_qty" Type="int" />
+          <Property Name="nagruzka_calc_id" Type="int" Nullable="false" />
+          <Property Name="has_potok" Type="int" />
+          <Property Name="has_comment" Type="int" />
+          <Property Name="comment" Type="nvarchar(max)" />
+          <Property Name="is_aud" Type="int" />
+        </EntityType>
+        <EntityType Name="post_all">
+          <Key>
+            <PropertyRef Name="post_id" />
+          </Key>
+          <Property Name="post_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="semester_all">
+          <Key>
+            <PropertyRef Name="semester_id" />
+          </Key>
+          <Property Name="semester_id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="part" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="teachers">
+          <Key>
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="post_id" Type="int" Nullable="false" />
+          <Property Name="rank" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="degree" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="rate" Type="int" />
+          <Property Name="cathedra_id" Type="int" Nullable="false" />
+          <Property Name="faculty_id" Type="int" Nullable="false" />
+          <Property Name="admpost_id" Type="int" Nullable="false" />
+          <Property Name="stag" Type="int" Nullable="false" />
+          <Property Name="date_s" Type="date" />
+          <Property Name="date_e" Type="date" />
+          <Property Name="birthday" Type="date" />
+        </EntityType>
+        <Association Name="FK_cathedra_cathedra_type">
+          <End Role="cathedra_type" Type="Self.cathedra_type" Multiplicity="1" />
+          <End Role="cathedra" Type="Self.cathedra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cathedra_type">
+              <PropertyRef Name="cathedra_type_id" />
+            </Principal>
+            <Dependent Role="cathedra">
+              <PropertyRef Name="cathedra_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_faculty_all_faculty_type_all">
+          <End Role="faculty_type_all" Type="Self.faculty_type_all" Multiplicity="1" />
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_type_all">
+              <PropertyRef Name="faculty_type_id" />
+            </Principal>
+            <Dependent Role="faculty_all">
+              <PropertyRef Name="faculty_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_all_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="nagruzka_all" Type="Self.nagruzka_all" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="nagruzka_all">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_all_semester_all">
+          <End Role="semester_all" Type="Self.semester_all" Multiplicity="1" />
+          <End Role="nagruzka_all" Type="Self.nagruzka_all" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semester_all">
+              <PropertyRef Name="semester_id" />
+            </Principal>
+            <Dependent Role="nagruzka_all">
+              <PropertyRef Name="semester_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_nagruzka_norm">
+          <End Role="nagruzka_norm" Type="Self.nagruzka_norm" Multiplicity="0..1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nagruzka_norm">
+              <PropertyRef Name="nagruzka_norm_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="nagruzka_norm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_nagruzka_type">
+          <End Role="nagruzka_type" Type="Self.nagruzka_type" Multiplicity="1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nagruzka_type">
+              <PropertyRef Name="nagruzka_type_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="nagruzka_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_teachers">
+          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="teacher_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_other_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="nagruzka_other" Type="Self.nagruzka_other" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="nagruzka_other">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_other_teachers">
+          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="nagruzka_other" Type="Self.nagruzka_other" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="teacher_id" />
+            </Principal>
+            <Dependent Role="nagruzka_other">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_type_nagruzka_calc">
+          <End Role="nagruzka_calc" Type="Self.nagruzka_calc" Multiplicity="1" />
+          <End Role="nagruzka_type" Type="Self.nagruzka_type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nagruzka_calc">
+              <PropertyRef Name="nagruzka_calc_id" />
+            </Principal>
+            <Dependent Role="nagruzka_type">
+              <PropertyRef Name="nagruzka_calc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teachers_cathedra">
+          <End Role="cathedra" Type="Self.cathedra" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cathedra">
+              <PropertyRef Name="cathedra_id" />
+            </Principal>
+            <Dependent Role="teachers">
+              <PropertyRef Name="cathedra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teachers_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="teachers">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teachers_post_all">
+          <End Role="post_all" Type="Self.post_all" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post_all">
+              <PropertyRef Name="post_id" />
+            </Principal>
+            <Dependent Role="teachers">
+              <PropertyRef Name="post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VovksStudentModelStoreContainer">
+          <EntitySet Name="admpost_all" EntityType="Self.admpost_all" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cathedra" EntityType="Self.cathedra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cathedra_type" EntityType="Self.cathedra_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="faculty_all" EntityType="Self.faculty_all" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="faculty_type_all" EntityType="Self.faculty_type_all" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nagruzka_all" EntityType="Self.nagruzka_all" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nagruzka_calc" EntityType="Self.nagruzka_calc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nagruzka_details" EntityType="Self.nagruzka_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nagruzka_norm" EntityType="Self.nagruzka_norm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nagruzka_other" EntityType="Self.nagruzka_other" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nagruzka_type" EntityType="Self.nagruzka_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="post_all" EntityType="Self.post_all" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="semester_all" EntityType="Self.semester_all" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teachers" EntityType="Self.teachers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cathedra_cathedra_type" Association="Self.FK_cathedra_cathedra_type">
+            <End Role="cathedra_type" EntitySet="cathedra_type" />
+            <End Role="cathedra" EntitySet="cathedra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_faculty_all_faculty_type_all" Association="Self.FK_faculty_all_faculty_type_all">
+            <End Role="faculty_type_all" EntitySet="faculty_type_all" />
+            <End Role="faculty_all" EntitySet="faculty_all" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_all_faculty_all" Association="Self.FK_nagruzka_all_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="nagruzka_all" EntitySet="nagruzka_all" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_all_semester_all" Association="Self.FK_nagruzka_all_semester_all">
+            <End Role="semester_all" EntitySet="semester_all" />
+            <End Role="nagruzka_all" EntitySet="nagruzka_all" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_faculty_all" Association="Self.FK_nagruzka_details_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_nagruzka_norm" Association="Self.FK_nagruzka_details_nagruzka_norm">
+            <End Role="nagruzka_norm" EntitySet="nagruzka_norm" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_nagruzka_type" Association="Self.FK_nagruzka_details_nagruzka_type">
+            <End Role="nagruzka_type" EntitySet="nagruzka_type" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_teachers" Association="Self.FK_nagruzka_details_teachers">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_other_faculty_all" Association="Self.FK_nagruzka_other_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="nagruzka_other" EntitySet="nagruzka_other" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_other_teachers" Association="Self.FK_nagruzka_other_teachers">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="nagruzka_other" EntitySet="nagruzka_other" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_type_nagruzka_calc" Association="Self.FK_nagruzka_type_nagruzka_calc">
+            <End Role="nagruzka_calc" EntitySet="nagruzka_calc" />
+            <End Role="nagruzka_type" EntitySet="nagruzka_type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teachers_cathedra" Association="Self.FK_teachers_cathedra">
+            <End Role="cathedra" EntitySet="cathedra" />
+            <End Role="teachers" EntitySet="teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teachers_faculty_all" Association="Self.FK_teachers_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="teachers" EntitySet="teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teachers_post_all" Association="Self.FK_teachers_post_all">
+            <End Role="post_all" EntitySet="post_all" />
+            <End Role="teachers" EntitySet="teachers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VovksStudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admpost_all">
+          <Key>
+            <PropertyRef Name="admpost_id" />
+          </Key>
+          <Property Name="admpost_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cathedra">
+          <Key>
+            <PropertyRef Name="cathedra_id" />
+          </Key>
+          <Property Name="cathedra_id" Type="Int32" Nullable="false" />
+          <Property Name="faculty_id" Type="Int32" Nullable="false" />
+          <Property Name="nameshort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cathedra_type_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cathedra_type" Relationship="Self.FK_cathedra_cathedra_type" FromRole="cathedra" ToRole="cathedra_type" />
+          <NavigationProperty Name="teachers" Relationship="Self.FK_teachers_cathedra" FromRole="cathedra" ToRole="teachers" />
+        </EntityType>
+        <EntityType Name="cathedra_type">
+          <Key>
+            <PropertyRef Name="cathedra_type_id" />
+          </Key>
+          <Property Name="cathedra_type_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="cathedra" Relationship="Self.FK_cathedra_cathedra_type" FromRole="cathedra_type" ToRole="cathedra" />
+        </EntityType>
+        <EntityType Name="faculty_all">
+          <Key>
+            <PropertyRef Name="faculty_id" />
+          </Key>
+          <Property Name="faculty_id" Type="Int32" Nullable="false" />
+          <Property Name="faculty_type_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="faculty_type_all" Relationship="Self.FK_faculty_all_faculty_type_all" FromRole="faculty_all" ToRole="faculty_type_all" />
+          <NavigationProperty Name="nagruzka_all" Relationship="Self.FK_nagruzka_all_faculty_all" FromRole="faculty_all" ToRole="nagruzka_all" />
+          <NavigationProperty Name="nagruzka_details" Relationship="Self.FK_nagruzka_details_faculty_all" FromRole="faculty_all" ToRole="nagruzka_details" />
+          <NavigationProperty Name="nagruzka_other" Relationship="Self.FK_nagruzka_other_faculty_all" FromRole="faculty_all" ToRole="nagruzka_other" />
+          <NavigationProperty Name="teachers" Relationship="Self.FK_teachers_faculty_all" FromRole="faculty_all" ToRole="teachers" />
+        </EntityType>
+        <EntityType Name="faculty_type_all">
+          <Key>
+            <PropertyRef Name="faculty_type_id" />
+          </Key>
+          <Property Name="faculty_type_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="faculty_all" Relationship="Self.FK_faculty_all_faculty_type_all" FromRole="faculty_type_all" ToRole="faculty_all" />
+        </EntityType>
+        <EntityType Name="nagruzka_all">
+          <Key>
+            <PropertyRef Name="nagruzka_id" />
+          </Key>
+          <Property Name="nagruzka_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="zayavka_id" Type="Int32" Nullable="false" />
+          <Property Name="faculty_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kurs_id" Type="Int32" Nullable="false" />
+          <Property Name="type_form_id" Type="Int32" Nullable="false" />
+          <Property Name="specialization_id" Type="Int32" Nullable="false" />
+          <Property Name="semester_id" Type="Int32" Nullable="false" />
+          <Property Name="lec" Type="Int32" Nullable="false" />
+          <Property Name="sem" Type="Int32" Nullable="false" />
+          <Property Name="lab" Type="Int32" Nullable="false" />
+          <Property Name="kons" Type="Int32" Nullable="false" />
+          <Property Name="exam" Type="Int32" Nullable="false" />
+          <Property Name="zal" Type="Int32" Nullable="false" />
+          <Property Name="reyt" Type="Int32" Nullable="false" />
+          <Property Name="kurs" Type="Int32" Nullable="false" />
+          <Property Name="sam" Type="Int32" Nullable="false" />
+          <Property Name="nazva1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hours1" Type="Int32" Nullable="false" />
+          <Property Name="nazva2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hours2" Type="Int32" Nullable="false" />
+          <Property Name="nazva3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hours3" Type="Int32" Nullable="false" />
+          <Property Name="nazva4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hours4" Type="Int32" Nullable="false" />
+          <Property Name="nazva5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hours5" Type="Int32" Nullable="false" />
+          <Property Name="potok" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tofaculty_id" Type="Int32" Nullable="false" />
+          <Property Name="prac" Type="Int32" Nullable="false" />
+          <Property Name="pot_kons" Type="Int32" Nullable="false" />
+          <Property Name="mod_kontr" Type="Int32" Nullable="false" />
+          <Property Name="credit" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="students" Type="Int32" Nullable="false" />
+          <Property Name="potok_gr" Type="Int32" Nullable="false" />
+          <Property Name="subgroup" Type="Int32" Nullable="false" />
+          <Property Name="plan_hours" Type="Int32" Nullable="false" />
+          <Property Name="labgroup" Type="Int32" Nullable="false" />
+          <Property Name="lec_inyaz" Type="Int32" Nullable="false" />
+          <Property Name="exam_usno" Type="Int32" Nullable="false" />
+          <Property Name="zal_usno" Type="Int32" Nullable="false" />
+          <Property Name="roz_graph" Type="Int32" Nullable="false" />
+          <Property Name="mod_calloc" Type="Int32" Nullable="false" />
+          <Property Name="sam10" Type="Int32" Nullable="false" />
+          <Property Name="pragroup" Type="Int32" Nullable="false" />
+          <Property Name="mod_kon_num" Type="Int32" Nullable="false" />
+          <Property Name="roz_gra_num" Type="Int32" Nullable="false" />
+          <Property Name="mod_cal_num" Type="Int32" Nullable="false" />
+          <Property Name="acadgroup" Type="Int32" Nullable="false" />
+          <Property Name="pidgroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="faculty_all" Relationship="Self.FK_nagruzka_all_faculty_all" FromRole="nagruzka_all" ToRole="faculty_all" />
+          <NavigationProperty Name="semester_all" Relationship="Self.FK_nagruzka_all_semester_all" FromRole="nagruzka_all" ToRole="semester_all" />
+        </EntityType>
+        <EntityType Name="nagruzka_calc">
+          <Key>
+            <PropertyRef Name="nagruzka_calc_id" />
+          </Key>
+          <Property Name="nagruzka_calc_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="nagruzka_type" Relationship="Self.FK_nagruzka_type_nagruzka_calc" FromRole="nagruzka_calc" ToRole="nagruzka_type" />
+        </EntityType>
+        <EntityType Name="nagruzka_details">
+          <Key>
+            <PropertyRef Name="nagruzka_detail_id" />
+          </Key>
+          <Property Name="nagruzka_detail_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="nagruzka_year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="faculty_id" Type="Int32" Nullable="false" />
+          <Property Name="hours" Type="Int32" Nullable="false" />
+          <Property Name="nagruzka_type_id" Type="Int32" Nullable="false" />
+          <Property Name="atfaculty_id" Type="Int32" />
+          <Property Name="kurs_id" Type="Int32" />
+          <Property Name="form_id" Type="Int32" />
+          <Property Name="specialty_id" Type="Int32" />
+          <Property Name="groups" Type="Int32" />
+          <Property Name="persons" Type="Int32" />
+          <Property Name="nagruzka_norm_id" Type="Int32" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="potok" Type="Int32" />
+          <NavigationProperty Name="faculty_all" Relationship="Self.FK_nagruzka_details_faculty_all" FromRole="nagruzka_details" ToRole="faculty_all" />
+          <NavigationProperty Name="nagruzka_norm" Relationship="Self.FK_nagruzka_details_nagruzka_norm" FromRole="nagruzka_details" ToRole="nagruzka_norm" />
+          <NavigationProperty Name="nagruzka_type" Relationship="Self.FK_nagruzka_details_nagruzka_type" FromRole="nagruzka_details" ToRole="nagruzka_type" />
+          <NavigationProperty Name="teachers" Relationship="Self.FK_nagruzka_details_teachers" FromRole="nagruzka_details" ToRole="teachers" />
+        </EntityType>
+        <EntityType Name="nagruzka_norm">
+          <Key>
+            <PropertyRef Name="nagruzka_norm_id" />
+          </Key>
+          <Property Name="nagruzka_norm_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="nagruzka_details" Relationship="Self.FK_nagruzka_details_nagruzka_norm" FromRole="nagruzka_norm" ToRole="nagruzka_details" />
+        </EntityType>
+        <EntityType Name="nagruzka_other">
+          <Key>
+            <PropertyRef Name="nagruzka_other_id" />
+          </Key>
+          <Property Name="nagruzka_other_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="dek" Type="Int32" Nullable="false" />
+          <Property Name="dip_b" Type="Int32" Nullable="false" />
+          <Property Name="dip_s" Type="Int32" Nullable="false" />
+          <Property Name="dip_m" Type="Int32" Nullable="false" />
+          <Property Name="prym_kom" Type="Int32" Nullable="false" />
+          <Property Name="prakt_dipl" Type="Int32" Nullable="false" />
+          <Property Name="aspir" Type="Int32" Nullable="false" />
+          <Property Name="prakt_vyr" Type="Int32" Nullable="false" />
+          <Property Name="prakt_ped" Type="Int32" Nullable="false" />
+          <Property Name="prakt_nav" Type="Int32" Nullable="false" />
+          <Property Name="mpos" Type="Int32" Nullable="false" />
+          <Property Name="kontr_vydv" Type="Int32" Nullable="false" />
+          <Property Name="faculty_id" Type="Int32" Nullable="false" />
+          <Property Name="org_pr" Type="Int32" Nullable="false" />
+          <Property Name="spec_rada" Type="Int32" Nullable="false" />
+          <Property Name="conference" Type="Int32" Nullable="false" />
+          <Property Name="method_rada" Type="Int32" Nullable="false" />
+          <Property Name="method_mon" Type="Int32" Nullable="false" />
+          <Property Name="method_vak" Type="Int32" Nullable="false" />
+          <Property Name="method_dak" Type="Int32" Nullable="false" />
+          <Property Name="science_secr" Type="Int32" Nullable="false" />
+          <Property Name="kurator" Type="Int32" Nullable="false" />
+          <Property Name="dip_bz" Type="Int32" Nullable="false" />
+          <Property Name="dip_sz" Type="Int32" Nullable="false" />
+          <Property Name="dip_mz" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="faculty_all" Relationship="Self.FK_nagruzka_other_faculty_all" FromRole="nagruzka_other" ToRole="faculty_all" />
+          <NavigationProperty Name="teachers" Relationship="Self.FK_nagruzka_other_teachers" FromRole="nagruzka_other" ToRole="teachers" />
+        </EntityType>
+        <EntityType Name="nagruzka_type">
+          <Key>
+            <PropertyRef Name="nagruzka_type_id" />
+          </Key>
+          <Property Name="nagruzka_type_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="has_faculty" Type="Int32" />
+          <Property Name="has_kurs" Type="Int32" />
+          <Property Name="has_form" Type="Int32" />
+          <Property Name="has_specialty" Type="Int32" />
+          <Property Name="has_groups" Type="Int32" />
+          <Property Name="has_persons" Type="Int32" />
+          <Property Name="has_norm" Type="Int32" />
+          <Property Name="has_qty" Type="Int32" />
+          <Property Name="nagruzka_calc_id" Type="Int32" Nullable="false" />
+          <Property Name="has_potok" Type="Int32" />
+          <Property Name="has_comment" Type="Int32" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_aud" Type="Int32" />
+          <NavigationProperty Name="nagruzka_calc" Relationship="Self.FK_nagruzka_type_nagruzka_calc" FromRole="nagruzka_type" ToRole="nagruzka_calc" />
+          <NavigationProperty Name="nagruzka_details" Relationship="Self.FK_nagruzka_details_nagruzka_type" FromRole="nagruzka_type" ToRole="nagruzka_details" />
+        </EntityType>
+        <EntityType Name="post_all">
+          <Key>
+            <PropertyRef Name="post_id" />
+          </Key>
+          <Property Name="post_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="teachers" Relationship="Self.FK_teachers_post_all" FromRole="post_all" ToRole="teachers" />
+        </EntityType>
+        <EntityType Name="semester_all">
+          <Key>
+            <PropertyRef Name="semester_id" />
+          </Key>
+          <Property Name="semester_id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="part" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="nagruzka_all" Relationship="Self.FK_nagruzka_all_semester_all" FromRole="semester_all" ToRole="nagruzka_all" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="teachers">
+          <Key>
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="post_id" Type="Int32" Nullable="false" />
+          <Property Name="rank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="degree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rate" Type="Int32" />
+          <Property Name="cathedra_id" Type="Int32" Nullable="false" />
+          <Property Name="faculty_id" Type="Int32" Nullable="false" />
+          <Property Name="admpost_id" Type="Int32" Nullable="false" />
+          <Property Name="stag" Type="Int32" Nullable="false" />
+          <Property Name="date_s" Type="DateTime" Precision="0" />
+          <Property Name="date_e" Type="DateTime" Precision="0" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="cathedra" Relationship="Self.FK_teachers_cathedra" FromRole="teachers" ToRole="cathedra" />
+          <NavigationProperty Name="faculty_all" Relationship="Self.FK_teachers_faculty_all" FromRole="teachers" ToRole="faculty_all" />
+          <NavigationProperty Name="nagruzka_details" Relationship="Self.FK_nagruzka_details_teachers" FromRole="teachers" ToRole="nagruzka_details" />
+          <NavigationProperty Name="nagruzka_other" Relationship="Self.FK_nagruzka_other_teachers" FromRole="teachers" ToRole="nagruzka_other" />
+          <NavigationProperty Name="post_all" Relationship="Self.FK_teachers_post_all" FromRole="teachers" ToRole="post_all" />
+        </EntityType>
+        <Association Name="FK_cathedra_cathedra_type">
+          <End Role="cathedra_type" Type="Self.cathedra_type" Multiplicity="1" />
+          <End Role="cathedra" Type="Self.cathedra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cathedra_type">
+              <PropertyRef Name="cathedra_type_id" />
+            </Principal>
+            <Dependent Role="cathedra">
+              <PropertyRef Name="cathedra_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teachers_cathedra">
+          <End Role="cathedra" Type="Self.cathedra" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cathedra">
+              <PropertyRef Name="cathedra_id" />
+            </Principal>
+            <Dependent Role="teachers">
+              <PropertyRef Name="cathedra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_faculty_all_faculty_type_all">
+          <End Role="faculty_type_all" Type="Self.faculty_type_all" Multiplicity="1" />
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_type_all">
+              <PropertyRef Name="faculty_type_id" />
+            </Principal>
+            <Dependent Role="faculty_all">
+              <PropertyRef Name="faculty_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_all_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="nagruzka_all" Type="Self.nagruzka_all" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="nagruzka_all">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_other_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="nagruzka_other" Type="Self.nagruzka_other" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="nagruzka_other">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teachers_faculty_all">
+          <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="faculty_all">
+              <PropertyRef Name="faculty_id" />
+            </Principal>
+            <Dependent Role="teachers">
+              <PropertyRef Name="faculty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_all_semester_all">
+          <End Role="semester_all" Type="Self.semester_all" Multiplicity="1" />
+          <End Role="nagruzka_all" Type="Self.nagruzka_all" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semester_all">
+              <PropertyRef Name="semester_id" />
+            </Principal>
+            <Dependent Role="nagruzka_all">
+              <PropertyRef Name="semester_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_type_nagruzka_calc">
+          <End Role="nagruzka_calc" Type="Self.nagruzka_calc" Multiplicity="1" />
+          <End Role="nagruzka_type" Type="Self.nagruzka_type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nagruzka_calc">
+              <PropertyRef Name="nagruzka_calc_id" />
+            </Principal>
+            <Dependent Role="nagruzka_type">
+              <PropertyRef Name="nagruzka_calc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_nagruzka_norm">
+          <End Role="nagruzka_norm" Type="Self.nagruzka_norm" Multiplicity="0..1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nagruzka_norm">
+              <PropertyRef Name="nagruzka_norm_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="nagruzka_norm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_nagruzka_type">
+          <End Role="nagruzka_type" Type="Self.nagruzka_type" Multiplicity="1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nagruzka_type">
+              <PropertyRef Name="nagruzka_type_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="nagruzka_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_details_teachers">
+          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="teacher_id" />
+            </Principal>
+            <Dependent Role="nagruzka_details">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nagruzka_other_teachers">
+          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="nagruzka_other" Type="Self.nagruzka_other" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="teacher_id" />
+            </Principal>
+            <Dependent Role="nagruzka_other">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teachers_post_all">
+          <End Role="post_all" Type="Self.post_all" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post_all">
+              <PropertyRef Name="post_id" />
+            </Principal>
+            <Dependent Role="teachers">
+              <PropertyRef Name="post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VovksStudentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admpost_all" EntityType="Self.admpost_all" />
+          <EntitySet Name="cathedra" EntityType="Self.cathedra" />
+          <EntitySet Name="cathedra_type" EntityType="Self.cathedra_type" />
+          <EntitySet Name="faculty_all" EntityType="Self.faculty_all" />
+          <EntitySet Name="faculty_type_all" EntityType="Self.faculty_type_all" />
+          <EntitySet Name="nagruzka_all" EntityType="Self.nagruzka_all" />
+          <EntitySet Name="nagruzka_calc" EntityType="Self.nagruzka_calc" />
+          <EntitySet Name="nagruzka_details" EntityType="Self.nagruzka_details" />
+          <EntitySet Name="nagruzka_norm" EntityType="Self.nagruzka_norm" />
+          <EntitySet Name="nagruzka_other" EntityType="Self.nagruzka_other" />
+          <EntitySet Name="nagruzka_type" EntityType="Self.nagruzka_type" />
+          <EntitySet Name="post_all" EntityType="Self.post_all" />
+          <EntitySet Name="semester_all" EntityType="Self.semester_all" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="teachers" EntityType="Self.teachers" />
+          <AssociationSet Name="FK_cathedra_cathedra_type" Association="Self.FK_cathedra_cathedra_type">
+            <End Role="cathedra_type" EntitySet="cathedra_type" />
+            <End Role="cathedra" EntitySet="cathedra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teachers_cathedra" Association="Self.FK_teachers_cathedra">
+            <End Role="cathedra" EntitySet="cathedra" />
+            <End Role="teachers" EntitySet="teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_faculty_all_faculty_type_all" Association="Self.FK_faculty_all_faculty_type_all">
+            <End Role="faculty_type_all" EntitySet="faculty_type_all" />
+            <End Role="faculty_all" EntitySet="faculty_all" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_all_faculty_all" Association="Self.FK_nagruzka_all_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="nagruzka_all" EntitySet="nagruzka_all" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_faculty_all" Association="Self.FK_nagruzka_details_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_other_faculty_all" Association="Self.FK_nagruzka_other_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="nagruzka_other" EntitySet="nagruzka_other" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teachers_faculty_all" Association="Self.FK_teachers_faculty_all">
+            <End Role="faculty_all" EntitySet="faculty_all" />
+            <End Role="teachers" EntitySet="teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_all_semester_all" Association="Self.FK_nagruzka_all_semester_all">
+            <End Role="semester_all" EntitySet="semester_all" />
+            <End Role="nagruzka_all" EntitySet="nagruzka_all" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_type_nagruzka_calc" Association="Self.FK_nagruzka_type_nagruzka_calc">
+            <End Role="nagruzka_calc" EntitySet="nagruzka_calc" />
+            <End Role="nagruzka_type" EntitySet="nagruzka_type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_nagruzka_norm" Association="Self.FK_nagruzka_details_nagruzka_norm">
+            <End Role="nagruzka_norm" EntitySet="nagruzka_norm" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_nagruzka_type" Association="Self.FK_nagruzka_details_nagruzka_type">
+            <End Role="nagruzka_type" EntitySet="nagruzka_type" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_details_teachers" Association="Self.FK_nagruzka_details_teachers">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="nagruzka_details" EntitySet="nagruzka_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nagruzka_other_teachers" Association="Self.FK_nagruzka_other_teachers">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="nagruzka_other" EntitySet="nagruzka_other" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teachers_post_all" Association="Self.FK_teachers_post_all">
+            <End Role="post_all" EntitySet="post_all" />
+            <End Role="teachers" EntitySet="teachers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VovksStudentModelStoreContainer" CdmEntityContainer="VovksStudentEntities">
+          <EntitySetMapping Name="admpost_all">
+            <EntityTypeMapping TypeName="VovksStudentModel.admpost_all">
+              <MappingFragment StoreEntitySet="admpost_all">
+                <ScalarProperty Name="admpost_id" ColumnName="admpost_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cathedra">
+            <EntityTypeMapping TypeName="VovksStudentModel.cathedra">
+              <MappingFragment StoreEntitySet="cathedra">
+                <ScalarProperty Name="cathedra_id" ColumnName="cathedra_id" />
+                <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+                <ScalarProperty Name="nameshort" ColumnName="nameshort" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="cathedra_type_id" ColumnName="cathedra_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cathedra_type">
+            <EntityTypeMapping TypeName="VovksStudentModel.cathedra_type">
+              <MappingFragment StoreEntitySet="cathedra_type">
+                <ScalarProperty Name="cathedra_type_id" ColumnName="cathedra_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="faculty_all">
+            <EntityTypeMapping TypeName="VovksStudentModel.faculty_all">
+              <MappingFragment StoreEntitySet="faculty_all">
+                <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+                <ScalarProperty Name="faculty_type_id" ColumnName="faculty_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="faculty_type_all">
+            <EntityTypeMapping TypeName="VovksStudentModel.faculty_type_all">
+              <MappingFragment StoreEntitySet="faculty_type_all">
+                <ScalarProperty Name="faculty_type_id" ColumnName="faculty_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nagruzka_all">
+            <EntityTypeMapping TypeName="VovksStudentModel.nagruzka_all">
+              <MappingFragment StoreEntitySet="nagruzka_all">
+                <ScalarProperty Name="nagruzka_id" ColumnName="nagruzka_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="zayavka_id" ColumnName="zayavka_id" />
+                <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="kurs_id" ColumnName="kurs_id" />
+                <ScalarProperty Name="type_form_id" ColumnName="type_form_id" />
+                <ScalarProperty Name="specialization_id" ColumnName="specialization_id" />
+                <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+                <ScalarProperty Name="lec" ColumnName="lec" />
+                <ScalarProperty Name="sem" ColumnName="sem" />
+                <ScalarProperty Name="lab" ColumnName="lab" />
+                <ScalarProperty Name="kons" ColumnName="kons" />
+                <ScalarProperty Name="exam" ColumnName="exam" />
+                <ScalarProperty Name="zal" ColumnName="zal" />
+                <ScalarProperty Name="reyt" ColumnName="reyt" />
+                <ScalarProperty Name="kurs" ColumnName="kurs" />
+                <ScalarProperty Name="sam" ColumnName="sam" />
+                <ScalarProperty Name="nazva1" ColumnName="nazva1" />
+                <ScalarProperty Name="hours1" ColumnName="hours1" />
+                <ScalarProperty Name="nazva2" ColumnName="nazva2" />
+                <ScalarProperty Name="hours2" ColumnName="hours2" />
+                <ScalarProperty Name="nazva3" ColumnName="nazva3" />
+                <ScalarProperty Name="hours3" ColumnName="hours3" />
+                <ScalarProperty Name="nazva4" ColumnName="nazva4" />
+                <ScalarProperty Name="hours4" ColumnName="hours4" />
+                <ScalarProperty Name="nazva5" ColumnName="nazva5" />
+                <ScalarProperty Name="hours5" ColumnName="hours5" />
+                <ScalarProperty Name="potok" ColumnName="potok" />
+                <ScalarProperty Name="tofaculty_id" ColumnName="tofaculty_id" />
+                <ScalarProperty Name="prac" ColumnName="prac" />
+                <ScalarProperty Name="pot_kons" ColumnName="pot_kons" />
+                <ScalarProperty Name="mod_kontr" ColumnName="mod_kontr" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="students" ColumnName="students" />
+                <ScalarProperty Name="potok_gr" ColumnName="potok_gr" />
+                <ScalarProperty Name="subgroup" ColumnName="subgroup" />
+                <ScalarProperty Name="plan_hours" ColumnName="plan_hours" />
+                <ScalarProperty Name="labgroup" ColumnName="labgroup" />
+                <ScalarProperty Name="lec_inyaz" ColumnName="lec_inyaz" />
+                <ScalarProperty Name="exam_usno" ColumnName="exam_usno" />
+                <ScalarProperty Name="zal_usno" ColumnName="zal_usno" />
+                <ScalarProperty Name="roz_graph" ColumnName="roz_graph" />
+                <ScalarProperty Name="mod_calloc" ColumnName="mod_calloc" />
+                <ScalarProperty Name="sam10" ColumnName="sam10" />
+                <ScalarProperty Name="pragroup" ColumnName="pragroup" />
+                <ScalarProperty Name="mod_kon_num" ColumnName="mod_kon_num" />
+                <ScalarProperty Name="roz_gra_num" ColumnName="roz_gra_num" />
+                <ScalarProperty Name="mod_cal_num" ColumnName="mod_cal_num" />
+                <ScalarProperty Name="acadgroup" ColumnName="acadgroup" />
+                <ScalarProperty Name="pidgroup" ColumnName="pidgroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nagruzka_calc">
+            <EntityTypeMapping TypeName="VovksStudentModel.nagruzka_calc">
+              <MappingFragment StoreEntitySet="nagruzka_calc">
+                <ScalarProperty Name="nagruzka_calc_id" ColumnName="nagruzka_calc_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nagruzka_details">
+            <EntityTypeMapping TypeName="VovksStudentModel.nagruzka_details">
+              <MappingFragment StoreEntitySet="nagruzka_details">
+                <ScalarProperty Name="nagruzka_detail_id" ColumnName="nagruzka_detail_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="nagruzka_year" ColumnName="nagruzka_year" />
+                <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="nagruzka_type_id" ColumnName="nagruzka_type_id" />
+                <ScalarProperty Name="atfaculty_id" ColumnName="atfaculty_id" />
+                <ScalarProperty Name="kurs_id" ColumnName="kurs_id" />
+                <ScalarProperty Name="form_id" ColumnName="form_id" />
+                <ScalarProperty Name="specialty_id" ColumnName="specialty_id" />
+                <ScalarProperty Name="groups" ColumnName="groups" />
+                <ScalarProperty Name="persons" ColumnName="persons" />
+                <ScalarProperty Name="nagruzka_norm_id" ColumnName="nagruzka_norm_id" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="potok" ColumnName="potok" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nagruzka_norm">
+            <EntityTypeMapping TypeName="VovksStudentModel.nagruzka_norm">
+              <MappingFragment StoreEntitySet="nagruzka_norm">
+                <ScalarProperty Name="nagruzka_norm_id" ColumnName="nagruzka_norm_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nagruzka_other">
+            <EntityTypeMapping TypeName="VovksStudentModel.nagruzka_other">
+              <MappingFragment StoreEntitySet="nagruzka_other">
+                <ScalarProperty Name="nagruzka_other_id" ColumnName="nagruzka_other_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="dek" ColumnName="dek" />
+                <ScalarProperty Name="dip_b" ColumnName="dip_b" />
+                <ScalarProperty Name="dip_s" ColumnName="dip_s" />
+                <ScalarProperty Name="dip_m" ColumnName="dip_m" />
+                <ScalarProperty Name="prym_kom" ColumnName="prym_kom" />
+                <ScalarProperty Name="prakt_dipl" ColumnName="prakt_dipl" />
+                <ScalarProperty Name="aspir" ColumnName="aspir" />
+                <ScalarProperty Name="prakt_vyr" ColumnName="prakt_vyr" />
+                <ScalarProperty Name="prakt_ped" ColumnName="prakt_ped" />
+                <ScalarProperty Name="prakt_nav" ColumnName="prakt_nav" />
+                <ScalarProperty Name="mpos" ColumnName="mpos" />
+                <ScalarProperty Name="kontr_vydv" ColumnName="kontr_vydv" />
+                <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+                <ScalarProperty Name="org_pr" ColumnName="org_pr" />
+                <ScalarProperty Name="spec_rada" ColumnName="spec_rada" />
+                <ScalarProperty Name="conference" ColumnName="conference" />
+                <ScalarProperty Name="method_rada" ColumnName="method_rada" />
+                <ScalarProperty Name="method_mon" ColumnName="method_mon" />
+                <ScalarProperty Name="method_vak" ColumnName="method_vak" />
+                <ScalarProperty Name="method_dak" ColumnName="method_dak" />
+                <ScalarProperty Name="science_secr" ColumnName="science_secr" />
+                <ScalarProperty Name="kurator" ColumnName="kurator" />
+                <ScalarProperty Name="dip_bz" ColumnName="dip_bz" />
+                <ScalarProperty Name="dip_sz" ColumnName="dip_sz" />
+                <ScalarProperty Name="dip_mz" ColumnName="dip_mz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nagruzka_type">
+            <EntityTypeMapping TypeName="VovksStudentModel.nagruzka_type">
+              <MappingFragment StoreEntitySet="nagruzka_type">
+                <ScalarProperty Name="nagruzka_type_id" ColumnName="nagruzka_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="has_faculty" ColumnName="has_faculty" />
+                <ScalarProperty Name="has_kurs" ColumnName="has_kurs" />
+                <ScalarProperty Name="has_form" ColumnName="has_form" />
+                <ScalarProperty Name="has_specialty" ColumnName="has_specialty" />
+                <ScalarProperty Name="has_groups" ColumnName="has_groups" />
+                <ScalarProperty Name="has_persons" ColumnName="has_persons" />
+                <ScalarProperty Name="has_norm" ColumnName="has_norm" />
+                <ScalarProperty Name="has_qty" ColumnName="has_qty" />
+                <ScalarProperty Name="nagruzka_calc_id" ColumnName="nagruzka_calc_id" />
+                <ScalarProperty Name="has_potok" ColumnName="has_potok" />
+                <ScalarProperty Name="has_comment" ColumnName="has_comment" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="is_aud" ColumnName="is_aud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="post_all">
+            <EntityTypeMapping TypeName="VovksStudentModel.post_all">
+              <MappingFragment StoreEntitySet="post_all">
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="semester_all">
+            <EntityTypeMapping TypeName="VovksStudentModel.semester_all">
+              <MappingFragment StoreEntitySet="semester_all">
+                <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="part" ColumnName="part" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="VovksStudentModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teachers">
+            <EntityTypeMapping TypeName="VovksStudentModel.teachers">
+              <MappingFragment StoreEntitySet="teachers">
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="degree" ColumnName="degree" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="cathedra_id" ColumnName="cathedra_id" />
+                <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+                <ScalarProperty Name="admpost_id" ColumnName="admpost_id" />
+                <ScalarProperty Name="stag" ColumnName="stag" />
+                <ScalarProperty Name="date_s" ColumnName="date_s" />
+                <ScalarProperty Name="date_e" ColumnName="date_e" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

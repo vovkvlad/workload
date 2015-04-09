@@ -38,8 +38,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -73,17 +81,104 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdmPostController.cs" />
+    <Compile Include="Controllers\CathedraController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\NagruzkaAllController.cs" />
+    <Compile Include="Controllers\PostAllController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SemesterController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\admpost_all.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cathedra.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cathedra_type.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\faculty_all.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\faculty_type_all.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nagruzka_all.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nagruzka_calc.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nagruzka_details.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nagruzka_norm.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nagruzka_other.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nagruzka_type.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\post_all.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\semester_all.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\teachers.cs">
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkLoad.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkLoad.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkLoad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkLoad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkLoad.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkLoad.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <EntityDeploy Include="Models\WorkLoad.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WorkLoad.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WorkLoad.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WorkLoad.edmx</DependentUpon>
+      <LastGenOutput>WorkLoad.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WorkLoad.edmx.diagram">
+      <DependentUpon>WorkLoad.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\WorkLoad.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WorkLoad.edmx</DependentUpon>
+      <LastGenOutput>WorkLoad.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -93,8 +188,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
