@@ -13,6 +13,16 @@ module.exports = function(grunt) {
             files: ['<%= jshint.files %>', '<%= appSass %>/**/*.scss'],
             tasks: ['jshint', 'clean:debug', 'concat:debug', 'sass:debug']
         },
+        copy: {
+            debug: {
+                src: 'app/index.html',
+                dest: 'build/debug/index.html'
+            },
+            release: {
+                src: 'app/index.html',
+                dest: 'build/release'
+            }
+        },
         concat: {
             options: {
                 process: function (src, filepath) {
@@ -79,9 +89,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('debug', ['jshint', 'clean:debug', 'concat:debug', 'sass:debug', 'watch']);
-    grunt.registerTask('release', ['jshint', 'clean:dist', 'concat:dist', 'sass:dist', 'uglify', 'watch']);
+    grunt.registerTask('debug', ['jshint', 'clean:debug', 'concat:debug', 'sass:debug', 'copy:debug', 'watch']);
+    grunt.registerTask('release', ['jshint', 'clean:dist', 'concat:dist', 'sass:dist', 'copy:release', 'uglify']);
 
 };
