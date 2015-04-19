@@ -44,7 +44,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%= debugCss %>/app.css': '<%= appSass %>/all.scss'
+                    '<%= debugCss %>': '<%= appSass %>/all.scss'
                 }
             },
             dist: {
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    '<%= releaseCss %>/app.css': '<%= appSass %>/all.scss'
+                    '<%= releaseCss %>': '<%= appSass %>/all.scss'
                 }
             }
         },
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('debug', ['jshint', 'clean:debug', 'concat:debug', 'sass:debug', 'copy:debug', 'watch']);
+    grunt.registerTask('debug', ['jshint', 'clean:debug', 'concat:debug', 'sass:debug', 'copy:debug']);
     grunt.registerTask('release', ['jshint', 'clean:dist', 'concat:dist', 'sass:dist', 'copy:release', 'uglify']);
 
 };
