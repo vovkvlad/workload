@@ -1,1 +1,5 @@
-@import "../vendor/materialize-src/sass/materialize";
+@import "../vendor/materialize-src/sass/components/color";
+@import "../vendor/materialize-src/sass/components/variables";
+
+@import "partials/header";
+@import "partials/menu";

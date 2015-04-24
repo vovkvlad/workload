@@ -6,31 +6,42 @@
     <script src="../../node_modules/angular/angular.js"></script>
     <script src="../../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app.js"></script>
+    <link href="vendor/css/materialize.css" rel="stylesheet">
     <link href="app.css" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="MainController">
 <header>
     <div class="row">
-        <div class="col s12 header">
-            <h1>Workload</h1>
+        <div class="col s12 content-header">
+            <h3>{{viewTitle}}</h3>
         </div>
     </div>
 </header>
 
 <main>
     <div class="row">
-        <div class="col s3"></div>
-        <div class="col s9" ui-view></div>
+        <div class="menu col s2 z-depth-1">
+            <div class="menu-logo">
+                <h1>Workload</h1>
+            </div>
+
+            <div class="collection">
+                <a class="collection-item" ui-sref="state1" ui-sref-active="active">State 1</a>
+                <a class="collection-item" ui-sref="state2" ui-sref-active="active">State 2</a>
+                <a class="collection-item" ui-sref="state3" ui-sref-active="active">State 3</a>
+            </div>
+        </div>
+        <div class="col s10" ui-view></div>
     </div>
 </main>
 
-<footer>
+<!--<footer>
     <div class="footer-copyright">
         <div class="container">
             © 2015 Copyright Text
             <a class="grey-text text-lighten-4 right" href="#!">View on github</a>
         </div>
     </div>
-</footer>
+</footer>-->
 </body>
 </html>

@@ -10,13 +10,15 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['<%= jshint.files %>', '<%= appSass %>/**/*.scss'],
-            tasks: ['jshint', 'clean:debug', 'concat:debug', 'sass:debug']
+            files: ['<%= jshint.files %>', '<%= appSass %>/**/*.scss', 'app/index.html'],
+            tasks: ['clean:debug', 'concat:debug', 'copy:debug', 'sass:debug']
         },
         copy: {
             debug: {
-                src: 'app/index.html',
-                dest: 'build/debug/index.html'
+                files: [
+                    {expand: true, cwd: 'app/vendor/materialize-src/', src: ['font/**'], dest: '<%= debugDir %>/vendor'},
+                    {expand: true, cwd: 'app', src: 'index.html', dest: 'build/debug/'}
+                ]
             },
             release: {
                 src: 'app/index.html',
@@ -26,16 +28,18 @@ module.exports = function(grunt) {
         concat: {
             options: {
                 process: function (src, filepath) {
-                    return '//####' + filepath + '\n' + src;
+                    return '//####' + filepath + '\n' + src +'\n';
                 }
             },
             debug: {
-                src: '<%= appJs %>',
-                dest: '<%= debugJs %>'
+                files: [
+                    {src: ['app/scripts/**/*.module.js','app/scripts/**/*.module.config.js','<%= appJs %>'], dest: '<%= debugJs %>'}
+                ]
             },
             dist: {
-                src: '<%= appJs %>',
-                dest: '<%= releaseJs %>'
+                files: [
+                    {src: ['app/scripts/**/*.module.js', 'app/scripts/**/*.module.config.js', '<%= appJs %>'], dest: '<%= releaseJs %>'}
+                ]
             }
         },
         sass: {
@@ -43,9 +47,10 @@ module.exports = function(grunt) {
                 options:{
                     style: 'expanded'
                 },
-                files: {
-                    '<%= debugCss %>': '<%= appSass %>/all.scss'
-                }
+                files: [
+                    {src: '<%= appSass %>/all.scss', dest: '<%= debugCss %>'},
+                    {src: 'app/vendor/materialize-src/sass/materialize.scss', dest:'<%= debugDir %>/vendor/css/materialize.css'}
+                ]
             },
             dist: {
                 options: {
@@ -92,7 +97,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('debug', ['jshint', 'clean:debug', 'concat:debug', 'sass:debug', 'copy:debug']);
-    grunt.registerTask('release', ['jshint', 'clean:dist', 'concat:dist', 'sass:dist', 'copy:release', 'uglify']);
+    grunt.registerTask('debug', ['jshint', 'clean:debug', 'concat:debug','copy:debug', 'sass:debug', 'watch']);
+    grunt.registerTask('release', ['jshint', 'clean:dist', 'concat:dist', 'copy:debug', 'sass:dist', 'uglify']);
 
 };
