@@ -1,3 +1,5 @@
 app.controller('MainController', ['$scope', function ($scope) {
-    $scope.viewTitle = 'Home';
+    $scope.title = {};
+    $scope.title.text = 'Навантаження';
+
 }]);
