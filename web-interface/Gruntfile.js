@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
             debug: {
                 files: [
-                    {src: ['app/scripts/**/*.module.js','app/scripts/**/*.module.config.js','<%= appJs %>'], dest: '<%= debugJs %>'}
+                    {src: ['app/scripts/**/*.module.js', 'app/scripts/**/*.controller.js', 'app/scripts/**/*.module.config.js','<%= appJs %>'], dest: '<%= debugJs %>'}
                 ]
             },
             dist: {
