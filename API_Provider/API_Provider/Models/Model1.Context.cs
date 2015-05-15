@@ -13,10 +13,10 @@ namespace API_Provider.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VovksStudentEntities : DbContext
+    public partial class VovksStudentEntities1 : DbContext
     {
-        public VovksStudentEntities()
-            : base("name=VovksStudentEntities")
+        public VovksStudentEntities1()
+            : base("name=VovksStudentEntities1")
         {
         }
     

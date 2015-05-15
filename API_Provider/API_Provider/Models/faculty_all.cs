@@ -26,10 +26,10 @@ namespace API_Provider.Models
         public int faculty_type_id { get; set; }
         public string name { get; set; }
     
-        public faculty_type_all faculty_type_all { get; set; }
-        public ICollection<nagruzka_all> nagruzka_all { get; set; }
-        public ICollection<nagruzka_details> nagruzka_details { get; set; }
-        public ICollection<nagruzka_other> nagruzka_other { get; set; }
-        public ICollection<teachers> teachers { get; set; }
+        public virtual faculty_type_all faculty_type_all { get; set; }
+        public virtual ICollection<nagruzka_all> nagruzka_all { get; set; }
+        public virtual ICollection<nagruzka_details> nagruzka_details { get; set; }
+        public virtual ICollection<nagruzka_other> nagruzka_other { get; set; }
+        public virtual ICollection<teachers> teachers { get; set; }
     }
 }

@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         },
         watch: {
             files: ['<%= jshint.files %>', '<%= appSass %>/**/*.scss', 'app/index.html'],
-            tasks: ['clean:debug', 'concat:debug', 'copy:debug', 'sass:debug']
+            tasks: ['clean:debug', 'concat:debug', 'copy:debug', 'sass:debug', 'watch']
         },
         copy: {
             debug: {

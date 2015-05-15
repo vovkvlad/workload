@@ -14,7 +14,7 @@ namespace API_Provider.Controllers
 {
     public class AdmPostController : ApiController
     {
-        private VovksStudentEntities db = new VovksStudentEntities();
+        private VovksStudentEntities1 db = new VovksStudentEntities1();
 
         // GET api/AdmPost
         public IQueryable<admpost_all> Getadmpost_all()

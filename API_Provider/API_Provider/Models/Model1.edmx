@@ -897,7 +897,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VovksStudentEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VovksStudentEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admpost_all" EntityType="Self.admpost_all" />
           <EntitySet Name="cathedra" EntityType="Self.cathedra" />
           <EntitySet Name="cathedra_type" EntityType="Self.cathedra_type" />
@@ -975,7 +975,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VovksStudentModelStoreContainer" CdmEntityContainer="VovksStudentEntities">
+        <EntityContainerMapping StorageEntityContainer="VovksStudentModelStoreContainer" CdmEntityContainer="VovksStudentEntities1">
           <EntitySetMapping Name="admpost_all">
             <EntityTypeMapping TypeName="VovksStudentModel.admpost_all">
               <MappingFragment StoreEntitySet="admpost_all">

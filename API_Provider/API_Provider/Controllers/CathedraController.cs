@@ -9,17 +9,29 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API_Provider.Models;
+using AutoMapper;
+using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
     public class CathedraController : ApiController
     {
-        private VovksStudentEntities db = new VovksStudentEntities();
+        private VovksStudentEntities1 db = new VovksStudentEntities1();
+
+        public CathedraController()
+        {
+            Mapper.CreateMap<teachers, int>().ConvertUsing(x => x.teacher_id);
+            Mapper.CreateMap<cathedra, cathedraDTO>()
+                .ForMember(dest => dest.teachers, opt => opt.MapFrom(src => src.teachers))
+                .ForMember(dest => dest.cathedra_type, opt => opt.MapFrom(src => src.cathedra_type.cathedra_type_id));
+            Mapper.AssertConfigurationIsValid();
+        }
 
         // GET api/Cathedra
-        public IQueryable<cathedra> Getcathedra()
+        public IEnumerable<cathedraDTO> Getcathedra()
         {
-            return db.cathedra;
+            var dto = Mapper.Map<IEnumerable<cathedra>, IEnumerable<cathedraDTO>>(db.cathedra.Take(5));
+            return dto;
         }
 
         // GET api/Cathedra/5
@@ -32,7 +44,8 @@ namespace API_Provider.Controllers
                 return NotFound();
             }
 
-            return Ok(cathedra);
+            var dto = Mapper.Map<cathedra, cathedraDTO>(cathedra);
+            return Ok(dto);
         }
 
         // PUT api/Cathedra/5

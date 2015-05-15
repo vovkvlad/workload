@@ -9,11 +9,14 @@ app.config(function($stateProvider, $urlRouterProvider){
         })
         .state('Semesters', {
             url: '/semesters',
-            template: '<p>Hello from state1</p>'
+            template: '<p>Hello from state1</p>',
+            controller: 'SemesterController'
         })
         .state('Statistics', {
             url: '/statistics',
-            template: '<p>Hello from state1</p>'})
+            template: '<p>Hello from state1</p>',
+            controller: 'StatisticsController'
+        })
         .state('home', {
             url: '/home',
             template: '<p>Hello from home</p>'

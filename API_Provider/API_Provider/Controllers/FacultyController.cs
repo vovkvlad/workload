@@ -9,17 +9,35 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API_Provider.Models;
+using AutoMapper;
+using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
     public class FacultyController : ApiController
     {
-        private VovksStudentEntities db = new VovksStudentEntities();
+        private VovksStudentEntities1 db = new VovksStudentEntities1();
+
+        public FacultyController()
+        {
+            Mapper.CreateMap<nagruzka_details, int>().ConvertUsing(x => x.nagruzka_detail_id);
+            Mapper.CreateMap<nagruzka_other, int>().ConvertUsing(x => x.nagruzka_other_id);
+            Mapper.CreateMap<nagruzka_all, int>().ConstructUsing(x => x.nagruzka_id);
+            Mapper.CreateMap<teachers, int>().ConstructUsing(x => x.teacher_id);
+            Mapper.CreateMap<faculty_all, facultyDTO>()
+                .ForMember(dest => dest.faculty_type_all, opt => opt.MapFrom(src => src.faculty_type_all.faculty_type_id))
+                .ForMember(dest => dest.nagruzka_all, opt => opt.MapFrom(src => src.nagruzka_all))
+                .ForMember(dest => dest.nagruzka_details, opt => opt.MapFrom(src => src.nagruzka_details))
+                .ForMember(dest => dest.nagruzka_other, opt => opt.MapFrom(src => src.nagruzka_other))
+                .ForMember(dest => dest.teachers, opt => opt.MapFrom(src => src.teachers));
+            Mapper.AssertConfigurationIsValid();
+        }
 
         // GET api/Faculty
-        public IQueryable<faculty_all> Getfaculty_all()
+        public IEnumerable<facultyDTO> Getfaculty_all()
         {
-            return db.faculty_all;
+            var dto = Mapper.Map<IEnumerable<faculty_all>, IEnumerable<facultyDTO>>(db.faculty_all.Take(5));
+            return dto;
         }
 
         // GET api/Faculty/5
@@ -31,8 +49,8 @@ namespace API_Provider.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(faculty_all);
+            var dto = Mapper.Map<faculty_all, facultyDTO>(faculty_all);
+            return Ok(dto);
         }
 
         // PUT api/Faculty/5

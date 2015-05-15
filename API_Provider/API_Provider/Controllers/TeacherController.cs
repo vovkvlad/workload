@@ -9,33 +9,52 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API_Provider.Models;
+using AutoMapper;
+using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
-    public class TeachersController : ApiController
+    public class TeacherController : ApiController
     {
-        private VovksStudentEntities db = new VovksStudentEntities();
+        private VovksStudentEntities1 db = new VovksStudentEntities1();
 
-        // GET api/Teachers
-        public IQueryable<teachers> Getteachers()
+        public TeacherController ()
         {
-            return db.teachers;
+            Mapper.CreateMap<nagruzka_details, int>().ConvertUsing(x => x.nagruzka_detail_id);
+            Mapper.CreateMap<nagruzka_other, int>().ConvertUsing(x => x.nagruzka_other_id);
+            Mapper.CreateMap<teachers, teachersDTO>()
+                .ForMember(dest => dest.cathedra, opt => opt.MapFrom(src => src.cathedra.cathedra_id))
+                .ForMember(dest => dest.faculty_all, opt => opt.MapFrom(src => src.faculty_all.faculty_id))
+                .ForMember(dest => dest.nagruzka_details, opt => opt.MapFrom(src => src.nagruzka_details))
+                .ForMember(dest => dest.nagruzka_other, opt => opt.MapFrom(src => src.nagruzka_other))
+                .ForMember(dest => dest.post_all, opt => opt.MapFrom(src => src.post_all.post_id));
+            Mapper.AssertConfigurationIsValid();
         }
 
-        // GET api/Teachers/5
+        // GET api/Teacher
+        public IEnumerable<teachersDTO> Getteachers()
+        {
+            var dto = Mapper.Map<IEnumerable<teachers>, IEnumerable<teachersDTO>>(db.teachers.Take(5));
+            return dto;
+        }
+
+        // GET api/Teacher/5
         [ResponseType(typeof(teachers))]
         public IHttpActionResult Getteachers(int id)
         {
             teachers teachers = db.teachers.Find(id);
+
             if (teachers == null)
             {
                 return NotFound();
             }
 
-            return Ok(teachers);
+            var dto = Mapper.Map<teachers, teachersDTO>(teachers);
+
+            return Ok(dto);
         }
 
-        // PUT api/Teachers/5
+        // PUT api/Teacher/5
         public IHttpActionResult Putteachers(int id, teachers teachers)
         {
             if (!ModelState.IsValid)
@@ -69,7 +88,7 @@ namespace API_Provider.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/Teachers
+        // POST api/Teacher
         [ResponseType(typeof(teachers))]
         public IHttpActionResult Postteachers(teachers teachers)
         {
@@ -99,7 +118,7 @@ namespace API_Provider.Controllers
             return CreatedAtRoute("DefaultApi", new { id = teachers.teacher_id }, teachers);
         }
 
-        // DELETE api/Teachers/5
+        // DELETE api/Teacher/5
         [ResponseType(typeof(teachers))]
         public IHttpActionResult Deleteteachers(int id)
         {

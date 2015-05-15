@@ -9,17 +9,27 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API_Provider.Models;
+using AutoMapper;
+using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
     public class NagruzkaAllController : ApiController
     {
-        private VovksStudentEntities db = new VovksStudentEntities();
+        private VovksStudentEntities1 db = new VovksStudentEntities1();
 
-        // GET api/NagruzkaAll
-        public IQueryable<nagruzka_all> Getnagruzka_all()
+        public NagruzkaAllController()
         {
-            return db.nagruzka_all;
+            Mapper.CreateMap<nagruzka_all, nagruzkaAllDTO>()
+                .ForMember(dest => dest.faculty_all, opt => opt.MapFrom(src => src.faculty_all.faculty_id))
+                .ForMember(dest => dest.semester_all, opt => opt.MapFrom(src => src.semester_all.semester_id));
+            Mapper.AssertConfigurationIsValid();
+        }
+        // GET api/NagruzkaAll
+        public IEnumerable<nagruzkaAllDTO> Getnagruzka_all()
+        {
+            var dto = Mapper.Map<IEnumerable<nagruzka_all>, IEnumerable<nagruzkaAllDTO>>(db.nagruzka_all.Take(5));
+            return dto;
         }
 
         // GET api/NagruzkaAll/5
@@ -31,8 +41,8 @@ namespace API_Provider.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(nagruzka_all);
+            var dto = Mapper.Map<nagruzka_all, nagruzkaAllDTO>(nagruzka_all);
+            return Ok(dto);
         }
 
         // PUT api/NagruzkaAll/5

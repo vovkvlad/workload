@@ -33,10 +33,10 @@ namespace API_Provider.Models
         public Nullable<System.DateTime> date_e { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
     
-        public cathedra cathedra { get; set; }
-        public faculty_all faculty_all { get; set; }
-        public ICollection<nagruzka_details> nagruzka_details { get; set; }
-        public ICollection<nagruzka_other> nagruzka_other { get; set; }
-        public post_all post_all { get; set; }
+        public virtual cathedra cathedra { get; set; }
+        public virtual faculty_all faculty_all { get; set; }
+        public virtual ICollection<nagruzka_details> nagruzka_details { get; set; }
+        public virtual ICollection<nagruzka_other> nagruzka_other { get; set; }
+        public virtual post_all post_all { get; set; }
     }
 }

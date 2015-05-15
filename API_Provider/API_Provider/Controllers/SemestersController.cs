@@ -9,20 +9,30 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API_Provider.Models;
+using AutoMapper;
+using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
-    public class SemesterController : ApiController
+    public class SemestersController : ApiController
     {
-        private VovksStudentEntities db = new VovksStudentEntities();
+        private VovksStudentEntities1 db = new VovksStudentEntities1();
 
-        // GET api/Semester
-        public IQueryable<semester_all> Getsemester_all()
+        public SemestersController()
         {
-            return db.semester_all;
+            Mapper.CreateMap<nagruzka_all, int>().ConvertUsing(x => x.nagruzka_id);
+            Mapper.CreateMap<semester_all, semesterallDTO>()
+                .ForMember(dest => dest.nagruzka_all, opt => opt.MapFrom(src => src.nagruzka_all));
+            Mapper.AssertConfigurationIsValid();
+        }
+        // GET api/Semesters
+        public IEnumerable<semesterallDTO> Getsemester_all()
+        {
+            var dto = Mapper.Map<IEnumerable<semester_all>, IEnumerable<semesterallDTO>>(db.semester_all.Take(5));
+            return dto;
         }
 
-        // GET api/Semester/5
+        // GET api/Semesters/5
         [ResponseType(typeof(semester_all))]
         public IHttpActionResult Getsemester_all(int id)
         {
@@ -31,11 +41,11 @@ namespace API_Provider.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(semester_all);
+            var dto = Mapper.Map<semester_all, semesterallDTO>(semester_all);
+            return Ok(dto);
         }
 
-        // PUT api/Semester/5
+        // PUT api/Semesters/5
         public IHttpActionResult Putsemester_all(int id, semester_all semester_all)
         {
             if (!ModelState.IsValid)
@@ -69,7 +79,7 @@ namespace API_Provider.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/Semester
+        // POST api/Semesters
         [ResponseType(typeof(semester_all))]
         public IHttpActionResult Postsemester_all(semester_all semester_all)
         {
@@ -99,7 +109,7 @@ namespace API_Provider.Controllers
             return CreatedAtRoute("DefaultApi", new { id = semester_all.semester_id }, semester_all);
         }
 
-        // DELETE api/Semester/5
+        // DELETE api/Semesters/5
         [ResponseType(typeof(semester_all))]
         public IHttpActionResult Deletesemester_all(int id)
         {

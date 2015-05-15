@@ -22,6 +22,6 @@ namespace API_Provider.Models
         public int post_id { get; set; }
         public string name { get; set; }
     
-        public ICollection<teachers> teachers { get; set; }
+        public virtual ICollection<teachers> teachers { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace API_Provider.Models
         public string name { get; set; }
         public int cathedra_type_id { get; set; }
     
-        public cathedra_type cathedra_type { get; set; }
-        public ICollection<teachers> teachers { get; set; }
+        public virtual cathedra_type cathedra_type { get; set; }
+        public virtual ICollection<teachers> teachers { get; set; }
     }
 }

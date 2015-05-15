@@ -24,6 +24,6 @@ namespace API_Provider.Models
         public int part { get; set; }
         public string name { get; set; }
     
-        public ICollection<nagruzka_all> nagruzka_all { get; set; }
+        public virtual ICollection<nagruzka_all> nagruzka_all { get; set; }
     }
 }
