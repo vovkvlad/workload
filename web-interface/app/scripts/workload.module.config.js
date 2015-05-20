@@ -1,4 +1,4 @@
-app.config(function($stateProvider, $urlRouterProvider){
+app.config(function($stateProvider, $urlRouterProvider, RestangularProvider){
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
@@ -9,7 +9,7 @@ app.config(function($stateProvider, $urlRouterProvider){
         })
         .state('Semesters', {
             url: '/semesters',
-            template: '<p>Hello from state1</p>',
+            templateUrl: 'templates/semester.html',
             controller: 'SemesterController'
         })
         .state('Statistics', {
@@ -20,5 +20,23 @@ app.config(function($stateProvider, $urlRouterProvider){
         .state('home', {
             url: '/home',
             template: '<p>Hello from home</p>'
+        })
+        .state('Faculty', {
+            url: '/faculty',
+            template: '<p>Hello from home</p>'
+        })
+        .state('Cathedra', {
+            url: '/cathedra',
+            template: '<p>Hello from home</p>'
+        })
+        .state('AdministrativePost', {
+            url: '/admpost',
+            template: '<p>Hello from home</p>'
+        })
+        .state('Nagruzka', {
+            url: '/nagruzkaall',
+            template: '<p>Hello from home</p>'
         });
+
+    RestangularProvider.setBaseUrl('http://localhost:63974/api');
 });

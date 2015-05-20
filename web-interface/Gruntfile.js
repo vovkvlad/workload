@@ -10,14 +10,18 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['<%= jshint.files %>', '<%= appSass %>/**/*.scss', 'app/index.html'],
-            tasks: ['clean:debug', 'concat:debug', 'copy:debug', 'sass:debug', 'watch']
+            files: ['<%= jshint.files %>', '<%= appSass %>/**/*.scss', 'app/index.html', 'app/scripts/**/*.html'],
+            tasks: ['clean:debug', 'concat:debug', 'copy:debug', 'sass:debug']
         },
         copy: {
             debug: {
                 files: [
                     {expand: true, cwd: 'app/vendor/materialize-src/', src: ['font/**'], dest: '<%= debugDir %>/vendor'},
-                    {expand: true, cwd: 'app', src: 'index.html', dest: 'build/debug/'}
+                    {expand: true, cwd: 'app/vendor/materialize-src/', src: ['css/**'], dest: '<%= debugDir %>/vendor'},
+                    {expand: true, cwd: 'app', src: 'index.html', dest: 'build/debug/'},
+                    {expand: true, cwd: 'app/scripts', src: ['**/*.html'], flatten: true, dest: 'build/debug/templates'},
+                    {expand: true, cwd: 'app/vendor', src: 'jquery.min.js', flatten: true, dest: 'build/debug/vendor/js'},
+                    {expand: true, cwd: 'app/vendor/materialize-src/js', src: 'materialize.min.js', flatten: true, dest: 'build/debug/vendor/js'}
                 ]
             },
             release: {
@@ -48,8 +52,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: [
-                    {src: '<%= appSass %>/all.scss', dest: '<%= debugCss %>'},
-                    {src: 'app/vendor/materialize-src/sass/materialize.scss', dest:'<%= debugDir %>/vendor/css/materialize.css'}
+                    {src: '<%= appSass %>/all.scss', dest: '<%= debugCss %>'}
                 ]
             },
             dist: {

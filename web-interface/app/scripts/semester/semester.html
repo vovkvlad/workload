@@ -1,0 +1,22 @@
+<form name="configForm" novalidate >
+    <div class="row">
+        <div class="input-field col s3">
+            <input id="semesterId" type="text" class="validate"/>
+            <label for="semesterId">Id семестру</label>
+        </div>
+
+        <div class="input-field col s3">
+            <input id="year" type="number"/>
+            <label for="year">Рік</label>
+        </div>
+
+        <div class="input-field col s3">
+            <input id="semesterNumber" type="number" class="validate"/>
+            <label for="semesterNumber">Номер семестру</label>
+        </div>
+    </div>
+
+</form>
+<button class="btn waves-effect waves-light" ng-click="fetchSemesters()">Fetch me!!</button>
+
+<div class="gridStyle" ng-grid="gridOptions"></div>
