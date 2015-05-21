@@ -5,7 +5,7 @@ app.controller('CathedraController', ['$scope', 'CathedraService', 'Cacher', fun
     $scope.configRequest = {};
 
     $scope.fetch = function () {
-        NagruzkaService.getList().then(function (semesters) {
+        CathedraService.getList().then(function (semesters) {
             var rawObjects = [];
 
             _.forEach(semesters, function (semesterItem) {
