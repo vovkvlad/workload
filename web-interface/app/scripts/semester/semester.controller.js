@@ -1,9 +1,10 @@
 app.controller('SemesterController', ['$scope', 'SemestersService', 'Cacher', function ($scope, SemesterService, Cacher) {
 
     $scope.title.text = 'Семестри';
-    $scope.myData = Cacher.semesters ? Cacher.semesters : [];
+    $scope.semesterData = Cacher.semesters ? Cacher.semesters : [];
+    $scope.configRequest = {};
 
-    $scope.fetchSemesters = function () {
+    $scope.fetch = function () {
         SemesterService.getList().then(function (semesters) {
             var rawObjects = [];
 
@@ -11,13 +12,16 @@ app.controller('SemesterController', ['$scope', 'SemestersService', 'Cacher', fu
                  rawObjects.push(semesterItem.plain());
             });
 
-            $scope.myData = rawObjects;
+            $scope.semesterData = rawObjects;
             Cacher.semesters = rawObjects;
             alert('fetched!');
         });
     };
 
+    $scope.onBlur = function (event) {
+    };
+
     $scope.gridOptions = {
-        data: 'myData'
+        data: 'semesterData'
     };
 }]);

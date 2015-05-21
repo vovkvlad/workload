@@ -1,0 +1,32 @@
+<form name="configForm" novalidate >
+    <div class="row">
+        <div class="input-field col s2">
+            <input id="teacherId" name="teacherId" type="number" class="validate" ng-model="configRequest.teacherId"/>
+            <label for="teacherId">Id семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="posId"  name="posId" type="number" ng-model="configRequest.posId"/>
+            <label for="posId">Рік</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="rate" name="rate" type="number" class="validate" ng-model="configRequest.rate" ng-blur="onBlur($event)"/>
+            <label for="rate">Номер семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="cathedraId" name="cathedraId" type="number" class="validate" ng-model="configRequest.cathedraId" ng-blur="onBlur($event)"/>
+            <label for="cathedraId">Номер семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="facultyId" name="facultyId" type="number" class="validate" ng-model="configRequest.facultyId" ng-blur="onBlur($event)"/>
+            <label for="facultyId">Номер семестру</label>
+        </div>
+    </div>
+
+    <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
+</form>
+
+<div class="gridStyle" ng-grid="gridOptions"></div>

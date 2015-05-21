@@ -1,0 +1,37 @@
+<form name="configForm" novalidate >
+    <div class="row">
+        <div class="input-field col s2">
+            <input id="nagruzkaId" name="nagruzkaId" type="number" class="validate" ng-model="configRequest.nagruzkaId"/>
+            <label for="nagruzkaId">Id семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="teacherId"  name="teacherId" type="number" ng-model="configRequest.teacherId"/>
+            <label for="teacherId">Рік</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="facultyId" name="facultyId" type="number" class="validate" ng-model="configRequest.facultyId" ng-blur="onBlur($event)"/>
+            <label for="facultyId">Номер семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="courseName" name="courseName" type="text" class="validate" ng-model="configRequest.courseName" ng-blur="onBlur($event)"/>
+            <label for="courseName">Номер семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="kursId" name="kursId" type="number" class="validate" ng-model="configRequest.kursId" ng-blur="onBlur($event)"/>
+            <label for="kursId">Номер семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="semesterId" name="facultyId" type="number" class="validate" ng-model="configRequest.semesterId" ng-blur="onBlur($event)"/>
+            <label for="semesterId">Номер семестру</label>
+        </div>
+    </div>
+
+    <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
+</form>
+
+<div class="gridStyle" ng-grid="gridOptions"></div>

@@ -1,0 +1,18 @@
+<form name="configForm" novalidate >
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="facultyId" name="facultyId" type="number" class="validate" ng-model="configRequest.facultyId"/>
+            <label for="facultyId">Id семестру</label>
+        </div>
+
+        <div class="input-field col s6">
+            <input id="facultyName"  name="facultyName" type="number" ng-model="configRequest.facultyName"/>
+            <label for="facultyName">Рік</label>
+        </div>
+
+    </div>
+
+    <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
+</form>
+
+<div class="gridStyle" ng-grid="gridOptions"></div>
