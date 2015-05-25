@@ -14,6 +14,7 @@ using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
+    [RoutePrefix("api/Semesters")]
     public class SemestersController : ApiController
     {
         private VovksStudentEntities1 db = new VovksStudentEntities1();
@@ -26,12 +27,14 @@ namespace API_Provider.Controllers
             Mapper.AssertConfigurationIsValid();
         }
         // GET api/Semesters
+        [Route("")]
         public IEnumerable<semesterallDTO> Getsemester_all()
         {
-            var dto = Mapper.Map<IEnumerable<semester_all>, IEnumerable<semesterallDTO>>(db.semester_all.Take(5));
+            var dto = Mapper.Map<IEnumerable<semester_all>, IEnumerable<semesterallDTO>>(db.semester_all.Take(10));
             return dto;
         }
 
+        [Route("{id}")]
         // GET api/Semesters/5
         [ResponseType(typeof(semester_all))]
         public IHttpActionResult Getsemester_all(int id)
@@ -45,86 +48,44 @@ namespace API_Provider.Controllers
             return Ok(dto);
         }
 
-        // PUT api/Semesters/5
-        public IHttpActionResult Putsemester_all(int id, semester_all semester_all)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != semester_all.semester_id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(semester_all).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!semester_allExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST api/Semesters
+        [Route("year/{yearNumber}")]
         [ResponseType(typeof(semester_all))]
-        public IHttpActionResult Postsemester_all(semester_all semester_all)
+        public IHttpActionResult GetsemesterByYear(int yearNumber)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.semester_all.Add(semester_all);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (semester_allExists(semester_all.semester_id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = semester_all.semester_id }, semester_all);
-        }
-
-        // DELETE api/Semesters/5
-        [ResponseType(typeof(semester_all))]
-        public IHttpActionResult Deletesemester_all(int id)
-        {
-            semester_all semester_all = db.semester_all.Find(id);
+            IEnumerable<semester_all> semester_all = db.semester_all.Where(x => x.year == yearNumber);
             if (semester_all == null)
             {
                 return NotFound();
             }
-
-            db.semester_all.Remove(semester_all);
-            db.SaveChanges();
-
-            return Ok(semester_all);
+            var dto = Mapper.Map<IEnumerable<semester_all>, IEnumerable<semesterallDTO>>(semester_all);
+            return Ok(dto);
         }
 
+        [Route("year/{yearNumber}/semester/{semesterNumber}")]
+        [ResponseType(typeof(semester_all))]
+        public IHttpActionResult GetsemesterByYearAndPart(int yearNumber, int semesterNumber)
+        {
+            IEnumerable<semester_all> semester_all = db.semester_all.Where(x => x.year == yearNumber && x.part == semesterNumber).Take(10);
+            if (semester_all == null)
+            {
+                return NotFound();
+            }
+            var dto = Mapper.Map<IEnumerable<semester_all>, IEnumerable<semesterallDTO>>(semester_all);
+            return Ok(dto);
+        }
+
+        [Route("semester/{semesterNumber}")]
+        [ResponseType(typeof(semester_all))]
+        public IHttpActionResult GetsemesterByPart(int semesterNumber)
+        {
+            IEnumerable<semester_all> semester_all = db.semester_all.Where(x => x.part == semesterNumber).Take(10);
+            if (semester_all == null)
+            {
+                return NotFound();
+            }
+            var dto = Mapper.Map<IEnumerable<semester_all>, IEnumerable<semesterallDTO>>(semester_all);
+            return Ok(dto);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
