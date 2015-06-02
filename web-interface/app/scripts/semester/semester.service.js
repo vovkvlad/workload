@@ -2,9 +2,9 @@ app.factory('SemestersService', function (Restangular) {
     var service =  Restangular.all('Semesters');
 
     return {
-        getAllSemesters: service.getList,
+        getAll: service.getList,
 
-        getOneSemester: service.get,
+        getOne: service.get,
 
         getYear: service.all('year').get,
 

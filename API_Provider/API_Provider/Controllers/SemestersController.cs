@@ -86,6 +86,7 @@ namespace API_Provider.Controllers
             var dto = Mapper.Map<IEnumerable<semester_all>, IEnumerable<semesterallDTO>>(semester_all);
             return Ok(dto);
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

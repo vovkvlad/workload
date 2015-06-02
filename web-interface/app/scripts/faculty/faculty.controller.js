@@ -1,26 +1,33 @@
-app.controller('FacultyController', ['$scope', 'FacultyService', 'Cacher', function ($scope, FacultyService, Cacher) {
-    $scope.title.text = 'Факультети';
+app.controller('FacultyController', ['$scope', 'FacultyService', 'Cacher', 'RawInfoRetriever',
+    function ($scope, FacultyService, Cacher, RawInfoRetriever) {
 
-    $scope.facultyData = Cacher.faculty ? Cacher.faculty : [];
-    $scope.configRequest = {};
+        $scope.title.text = 'Факультети';
+        $scope.Data = Cacher.faculty ? Cacher.faculty : [];
+        $scope.configRequest = {};
 
-    $scope.fetch = function () {
-        FacultyService.getList().then(function (semesters) {
-            var rawObjects = [];
+        $scope.fetch = function () {
+            if ($scope.configRequest.facultyId) {
+                FacultyService.getOne($scope.configRequest.facultyId).then(function (data) {
+                    $scope.Data = RawInfoRetriever(data);
+                    Cacher.faculty = $scope.Data;
+                });
+            } else if ($scope.configRequest.facultyName) {
+                FacultyService.getByName($scope.configRequest.facultyName).then(function (data) {
+                    $scope.Data = RawInfoRetriever(data);
+                    Cacher.faculty = $scope.Data;
+                });
+            } else {
+                FacultyService.getAll().then(function (data) {
+                    $scope.Data = RawInfoRetriever(data);
+                    Cacher.faculty = $scope.Data;
+                });
+            }
+        };
 
-            _.forEach(semesters, function (semesterItem) {
-                rawObjects.push(semesterItem.plain());
-            });
+        $scope.onBlur = function (event) {
+        };
 
-            $scope.facultyData = rawObjects;
-            Cacher.faculty = rawObjects;
-        });
-    };
-
-    $scope.onBlur = function (event) {
-    };
-
-    $scope.gridOptions = {
-        data: 'facultyData'
-    };
-}]);
+        $scope.gridOptions = {
+            data: 'Data'
+        };
+    }]);

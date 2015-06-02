@@ -1,3 +1,12 @@
 app.factory('FacultyService', function (Restangular) {
-    return Restangular.service('Faculty');
+    var service =  Restangular.all('Faculty');
+
+    return {
+        getAll: service.getList,
+
+        getOne: service.get,
+
+        getByName: service.all('name').get
+
+    };
 });

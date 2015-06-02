@@ -1,49 +1,38 @@
-app.controller('SemesterController', ['$scope', 'SemestersService', 'Cacher', function ($scope, SemesterService, Cacher) {
+app.controller('SemesterController', ['$scope', 'SemestersService', 'Cacher', 'RawInfoRetriever',
+    function ($scope, SemesterService, Cacher, RawInfoRetriever) {
 
     $scope.title.text = 'Семестри';
     $scope.semesterData = Cacher.semesters ? Cacher.semesters : [];
     $scope.configRequest = {};
 
-    function RecieveInfo (info) {
-        var rawObjects = [];
-
-        _.forEach(info, function (infoItem) {
-            infoItem.plain ? rawObjects.push(infoItem.plain()) : rawObjects.push(infoItem);
-        });
-
-        $scope.semesterData = rawObjects;
-        Cacher.semesters = rawObjects;
-    }
 
     $scope.fetch = function () {
-        if (configRequest.semesterId) {
-            SemesterService.getOneSemester(configRequest.semesterId).then(function (semesters) {
-                RecieveInfo(semesters);
+        if ($scope.configRequest.semesterId) {
+            SemesterService.getOne($scope.configRequest.semesterId).then(function (semesters) {
+                $scope.semesterData = RawInfoRetriever(semesters);
+                Cacher.semesters = $scope.semesterData;
             });
-        } else if (configRequest.year && configRequest.semesterNumber) {
-            SemesterService.getYearAndSemester(configRequest.year, configRequest.semesterNumber).then(function (semesters) {
-                RecieveInfo(semesters);
+        } else if ($scope.configRequest.year && $scope.configRequest.semesterNumber) {
+            SemesterService.getYearAndSemester($scope.configRequest.year, $scope.configRequest.semesterNumber).then(function (semesters) {
+                $scope.semesterData = RawInfoRetriever(semesters);
+                Cacher.semesters = $scope.semesterData;
             });
-        } else if (configRequest.year) {
-            SemesterService.getYear(configRequest.year).then(function (semesters) {
-                RecieveInfo(semesters);
+        } else if ($scope.configRequest.year) {
+            SemesterService.getYear($scope.configRequest.year).then(function (semesters) {
+                $scope.semesterData = RawInfoRetriever(semesters);
+                Cacher.semesters = $scope.semesterData;
             });
-        } else if (configRequest.semesterNumber) {
-            SemesterService.getSemesterPart(configRequest.semesterNumber).then(function (semesters) {
-                RecieveInfo(semesters);
+        } else if ($scope.configRequest.semesterNumber) {
+            SemesterService.getSemesterPart($scope.configRequest.semesterNumber).then(function (semesters) {
+                $scope.semesterData = RawInfoRetriever(semesters);
+                Cacher.semesters = $scope.semesterData;
             });
         } else {
-            SemesterService.getAllSemesters().then(function (semesters) {
-                RecieveInfo(semesters);
+            SemesterService.getAll().then(function (semesters) {
+                $scope.semesterData = RawInfoRetriever(semesters);
+                Cacher.semesters = $scope.semesterData;
             });
         }
-       /* SemesterService.getAllSemesters().then(function (semesters) {
-           RecieveInfo(semesters);
-        });
-
-        SemesterService.getYearAndSemester(1983, 2).then(function (semesters) {
-            RecieveInfo(semesters);
-        });*/
     };
 
     $scope.onBlur = function (event) {
