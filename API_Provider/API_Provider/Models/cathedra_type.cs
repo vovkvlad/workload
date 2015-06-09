@@ -16,12 +16,12 @@ namespace API_Provider.Models
     {
         public cathedra_type()
         {
-            this.cathedra = new HashSet<cathedra>();
+            this.cathedras = new HashSet<cathedra>();
         }
     
         public int cathedra_type_id { get; set; }
         public string name { get; set; }
     
-        public virtual ICollection<cathedra> cathedra { get; set; }
+        public virtual ICollection<cathedra> cathedras { get; set; }
     }
 }

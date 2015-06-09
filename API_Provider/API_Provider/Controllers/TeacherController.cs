@@ -14,126 +14,238 @@ using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
+    [RoutePrefix("api/Teacher")]
     public class TeacherController : ApiController
     {
-        private VovksStudentEntities1 db = new VovksStudentEntities1();
+        private VovksStudentEntities db = new VovksStudentEntities();
 
         public TeacherController ()
         {
-            Mapper.CreateMap<nagruzka_details, int>().ConvertUsing(x => x.nagruzka_detail_id);
-            Mapper.CreateMap<nagruzka_other, int>().ConvertUsing(x => x.nagruzka_other_id);
-            Mapper.CreateMap<teachers, teachersDTO>()
-                .ForMember(dest => dest.cathedra, opt => opt.MapFrom(src => src.cathedra.cathedra_id))
-                .ForMember(dest => dest.faculty_all, opt => opt.MapFrom(src => src.faculty_all.faculty_id))
-                .ForMember(dest => dest.nagruzka_details, opt => opt.MapFrom(src => src.nagruzka_details))
-                .ForMember(dest => dest.nagruzka_other, opt => opt.MapFrom(src => src.nagruzka_other))
-                .ForMember(dest => dest.post_all, opt => opt.MapFrom(src => src.post_all.post_id));
+            //Mapper.CreateMap<nagruzka_details, int>().ConvertUsing(x => x.nagruzka_detail_id);
+            //Mapper.CreateMap<nagruzka_other, int>().ConvertUsing(x => x.nagruzka_other_id);
+            Mapper.CreateMap<teacher, teachersDTO>()
+                .ForMember(dest => dest.cathedra, opt => opt.MapFrom(src => src.cathedra.name))
+                .ForMember(dest => dest.faculty_all, opt => opt.MapFrom(src => src.faculty_all.name))
+                .ForMember(dest => dest.post_all, opt => opt.MapFrom(src => src.post_all.name));
             Mapper.AssertConfigurationIsValid();
         }
 
         // GET api/Teacher
+        [Route("")]
         public IEnumerable<teachersDTO> Getteachers()
         {
-            var dto = Mapper.Map<IEnumerable<teachers>, IEnumerable<teachersDTO>>(db.teachers.Take(5));
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(db.teachers.Take(5));
             return dto;
         }
 
         // GET api/Teacher/5
-        [ResponseType(typeof(teachers))]
+        [Route("{id}")]
+        [ResponseType(typeof(teacher))]
         public IHttpActionResult Getteachers(int id)
         {
-            teachers teachers = db.teachers.Find(id);
+            teacher teachers = db.teachers.Find(id);
 
             if (teachers == null)
             {
                 return NotFound();
             }
 
-            var dto = Mapper.Map<teachers, teachersDTO>(teachers);
+            var dto = Mapper.Map<teacher, teachersDTO>(teachers);
 
             return Ok(dto);
         }
 
-        // PUT api/Teacher/5
-        public IHttpActionResult Putteachers(int id, teachers teachers)
+        [Route("post/{post_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByPostId(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var result = db.teachers.ToList().Where(teacher => teacher.post_id.Equals(id));
 
-            if (id != teachers.teacher_id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(teachers).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!teachersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST api/Teacher
-        [ResponseType(typeof(teachers))]
-        public IHttpActionResult Postteachers(teachers teachers)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.teachers.Add(teachers);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (teachersExists(teachers.teacher_id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = teachers.teacher_id }, teachers);
-        }
-
-        // DELETE api/Teacher/5
-        [ResponseType(typeof(teachers))]
-        public IHttpActionResult Deleteteachers(int id)
-        {
-            teachers teachers = db.teachers.Find(id);
-            if (teachers == null)
+            if (result.Count() == 0)
             {
                 return NotFound();
             }
 
-            db.teachers.Remove(teachers);
-            db.SaveChanges();
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
 
-            return Ok(teachers);
+            return Ok(dto);
         }
 
+        [Route("rank/{rank_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByRankId(int id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.rank.Equals(id));
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("rate/{rate_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByRateId(int id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.rate.Equals(id));
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("cathedra/{cathedra_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByCathedraId(int id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.cathedra_id.Equals(id));
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("faculty/{faculty_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByFacultyId(int id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.faculty_id.Equals(id));
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("faculty/{faculty_id}/post/{post_id}/rate/{rate_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByFacultyPostRateId(int faculty_id, int post_id, int rate_id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.faculty_id == faculty_id && teacher.post_id == post_id && teacher.rate == rate_id);
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("cathedra/{cathedra_id}/post/{post_id}/rate/{rate_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByCathedraPostRateId(int cathedra_id, int post_id, int rate_id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.cathedra_id == cathedra_id && teacher.post_id == post_id && teacher.rate == rate_id);
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("faculty/{faculty_id}/post/{post_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByFacultyPostId(int faculty_id, int post_id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.faculty_id == faculty_id && teacher.post_id == post_id);
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("faculty/{faculty_id}/rate/{rate_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByFacultyRateId(int faculty_id, int rate_id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.faculty_id == faculty_id && teacher.rate == rate_id);
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("cathedra/{cathedra_id}/post/{post_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByCathedraPostId(int cathedra_id, int post_id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.cathedra_id == cathedra_id && teacher.post_id == post_id);
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("cathedra/{cathedra_id}/post/rate/{rate_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByCathedraRateId(int cathedra_id, int rate_id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.cathedra_id == cathedra_id && teacher.rate == rate_id);
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
+
+        [Route("post/{post_id}/rate/{rate_id}")]
+        [ResponseType(typeof(teacher))]
+        public IHttpActionResult GetteachersByPostRateId(int post_id, int rate_id)
+        {
+            var result = db.teachers.ToList().Where(teacher => teacher.post_id == post_id && teacher.rate == rate_id);
+
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
+
+            return Ok(dto);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

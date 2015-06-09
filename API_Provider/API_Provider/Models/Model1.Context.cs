@@ -13,10 +13,10 @@ namespace API_Provider.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VovksStudentEntities1 : DbContext
+    public partial class VovksStudentEntities : DbContext
     {
-        public VovksStudentEntities1()
-            : base("name=VovksStudentEntities1")
+        public VovksStudentEntities()
+            : base("name=VovksStudentEntities")
         {
         }
     
@@ -26,7 +26,7 @@ namespace API_Provider.Models
         }
     
         public virtual DbSet<admpost_all> admpost_all { get; set; }
-        public virtual DbSet<cathedra> cathedra { get; set; }
+        public virtual DbSet<cathedra> cathedras { get; set; }
         public virtual DbSet<cathedra_type> cathedra_type { get; set; }
         public virtual DbSet<faculty_all> faculty_all { get; set; }
         public virtual DbSet<faculty_type_all> faculty_type_all { get; set; }
@@ -38,7 +38,7 @@ namespace API_Provider.Models
         public virtual DbSet<nagruzka_type> nagruzka_type { get; set; }
         public virtual DbSet<post_all> post_all { get; set; }
         public virtual DbSet<semester_all> semester_all { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<teachers> teachers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<teacher> teachers { get; set; }
     }
 }

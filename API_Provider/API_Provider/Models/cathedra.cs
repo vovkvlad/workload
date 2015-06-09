@@ -16,7 +16,7 @@ namespace API_Provider.Models
     {
         public cathedra()
         {
-            this.teachers = new HashSet<teachers>();
+            this.teachers = new HashSet<teacher>();
         }
     
         public int cathedra_id { get; set; }
@@ -26,6 +26,6 @@ namespace API_Provider.Models
         public int cathedra_type_id { get; set; }
     
         public virtual cathedra_type cathedra_type { get; set; }
-        public virtual ICollection<teachers> teachers { get; set; }
+        public virtual ICollection<teacher> teachers { get; set; }
     }
 }

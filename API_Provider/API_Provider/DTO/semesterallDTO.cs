@@ -12,6 +12,6 @@ namespace API_Provider.DTO
         public int part { get; set; }
         public string name { get; set; }
 
-        public int[] nagruzka_all { get; set; }
+        //public int[] nagruzka_all { get; set; }
     }
 }

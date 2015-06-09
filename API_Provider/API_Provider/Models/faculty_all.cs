@@ -19,7 +19,7 @@ namespace API_Provider.Models
             this.nagruzka_all = new HashSet<nagruzka_all>();
             this.nagruzka_details = new HashSet<nagruzka_details>();
             this.nagruzka_other = new HashSet<nagruzka_other>();
-            this.teachers = new HashSet<teachers>();
+            this.teachers = new HashSet<teacher>();
         }
     
         public int faculty_id { get; set; }
@@ -30,6 +30,6 @@ namespace API_Provider.Models
         public virtual ICollection<nagruzka_all> nagruzka_all { get; set; }
         public virtual ICollection<nagruzka_details> nagruzka_details { get; set; }
         public virtual ICollection<nagruzka_other> nagruzka_other { get; set; }
-        public virtual ICollection<teachers> teachers { get; set; }
+        public virtual ICollection<teacher> teachers { get; set; }
     }
 }

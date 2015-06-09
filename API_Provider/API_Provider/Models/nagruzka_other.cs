@@ -44,6 +44,6 @@ namespace API_Provider.Models
         public int dip_mz { get; set; }
     
         public virtual faculty_all faculty_all { get; set; }
-        public virtual teachers teachers { get; set; }
+        public virtual teacher teacher { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2a83a70980704ec2a0a3948f4b78cec1" Name="Diagram1">
+      <Diagram DiagramId="3dce776c8e494936b13302160931823f" Name="Diagram1" ZoomLevel="52">
         <EntityTypeShape EntityType="VovksStudentModel.admpost_all" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="VovksStudentModel.cathedra" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="VovksStudentModel.cathedra_type" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
@@ -18,8 +18,8 @@
         <EntityTypeShape EntityType="VovksStudentModel.nagruzka_type" Width="1.5" PointX="5.25" PointY="21.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VovksStudentModel.post_all" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="VovksStudentModel.semester_all" Width="1.5" PointX="6" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VovksStudentModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VovksStudentModel.teachers" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.sysdiagram" Width="1.5" PointX="8.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VovksStudentModel.teacher" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
         <AssociationConnector Association="VovksStudentModel.FK_cathedra_cathedra_type" ManuallyRouted="false" />
         <AssociationConnector Association="VovksStudentModel.FK_teachers_cathedra" ManuallyRouted="false" />
         <AssociationConnector Association="VovksStudentModel.FK_faculty_all_faculty_type_all" ManuallyRouted="false" />

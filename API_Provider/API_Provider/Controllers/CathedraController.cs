@@ -14,31 +14,34 @@ using API_Provider.DTO;
 
 namespace API_Provider.Controllers
 {
+    [RoutePrefix("api/Cathedra")]
     public class CathedraController : ApiController
     {
-        private VovksStudentEntities1 db = new VovksStudentEntities1();
+        private VovksStudentEntities db = new VovksStudentEntities();
 
         public CathedraController()
         {
-            Mapper.CreateMap<teachers, int>().ConvertUsing(x => x.teacher_id);
-            Mapper.CreateMap<cathedra, cathedraDTO>()
-                .ForMember(dest => dest.teachers, opt => opt.MapFrom(src => src.teachers))
-                .ForMember(dest => dest.cathedra_type, opt => opt.MapFrom(src => src.cathedra_type.cathedra_type_id));
+            Mapper.CreateMap<teacher, int>().ConvertUsing(x => x.teacher_id);
+            Mapper.CreateMap<cathedra, cathedraDTO>();
+                //.ForMember(dest => dest.teachers, opt => opt.MapFrom(src => src.teachers))
+                //.ForMember(dest => dest.cathedra_type, opt => opt.MapFrom(src => src.cathedra_type.cathedra_type_id));
             Mapper.AssertConfigurationIsValid();
         }
 
         // GET api/Cathedra
+        [Route("")]
         public IEnumerable<cathedraDTO> Getcathedra()
         {
-            var dto = Mapper.Map<IEnumerable<cathedra>, IEnumerable<cathedraDTO>>(db.cathedra.Take(5));
+            var dto = Mapper.Map<IEnumerable<cathedra>, IEnumerable<cathedraDTO>>(db.cathedras.Take(5));
             return dto;
         }
 
         // GET api/Cathedra/5
+        [Route("{id}")]
         [ResponseType(typeof(cathedra))]
         public IHttpActionResult Getcathedra(int id)
         {
-            cathedra cathedra = db.cathedra.Find(id);
+            cathedra cathedra = db.cathedras.Find(id);
             if (cathedra == null)
             {
                 return NotFound();
@@ -48,84 +51,31 @@ namespace API_Provider.Controllers
             return Ok(dto);
         }
 
-        // PUT api/Cathedra/5
-        public IHttpActionResult Putcathedra(int id, cathedra cathedra)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != cathedra.cathedra_id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(cathedra).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!cathedraExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST api/Cathedra
+        [Route("faculty/{id}")]
         [ResponseType(typeof(cathedra))]
-        public IHttpActionResult Postcathedra(cathedra cathedra)
+        public IHttpActionResult GetcathedraByFacultyId(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.cathedra.Add(cathedra);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (cathedraExists(cathedra.cathedra_id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = cathedra.cathedra_id }, cathedra);
-        }
-
-        // DELETE api/Cathedra/5
-        [ResponseType(typeof(cathedra))]
-        public IHttpActionResult Deletecathedra(int id)
-        {
-            cathedra cathedra = db.cathedra.Find(id);
-            if (cathedra == null)
+            var result = db.cathedras.ToList().Where(cathedra => cathedra.faculty_id.Equals(id));
+            if (result.Count() == 0)
             {
                 return NotFound();
             }
 
-            db.cathedra.Remove(cathedra);
-            db.SaveChanges();
+            var dto = Mapper.Map<IEnumerable<cathedra>, IEnumerable<cathedraDTO>>(result);
+            return Ok(dto);
+        }
 
-            return Ok(cathedra);
+        [Route("name/{name}")]
+        public IHttpActionResult GetcathedraByName_all(string name)
+        {
+            var x = name;
+            var result = db.cathedras.ToList().Where(text => text.name.Contains(name));
+            if (result.Count() == 0)
+            {
+                return NotFound();
+            }
+            var dto = Mapper.Map<IEnumerable<cathedra>, IEnumerable<cathedraDTO>>(result);
+            return Ok(dto);
         }
 
         protected override void Dispose(bool disposing)
@@ -139,7 +89,7 @@ namespace API_Provider.Controllers
 
         private bool cathedraExists(int id)
         {
-            return db.cathedra.Count(e => e.cathedra_id == id) > 0;
+            return db.cathedras.Count(e => e.cathedra_id == id) > 0;
         }
     }
 }

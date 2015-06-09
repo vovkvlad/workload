@@ -33,6 +33,6 @@ namespace API_Provider.Models
         public virtual faculty_all faculty_all { get; set; }
         public virtual nagruzka_norm nagruzka_norm { get; set; }
         public virtual nagruzka_type nagruzka_type { get; set; }
-        public virtual teachers teachers { get; set; }
+        public virtual teacher teacher { get; set; }
     }
 }

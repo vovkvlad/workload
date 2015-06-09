@@ -17,13 +17,13 @@ namespace API_Provider.Controllers
     [RoutePrefix("api/Semesters")]
     public class SemestersController : ApiController
     {
-        private VovksStudentEntities1 db = new VovksStudentEntities1();
+        private VovksStudentEntities db = new VovksStudentEntities();
 
         public SemestersController()
         {
             Mapper.CreateMap<nagruzka_all, int>().ConvertUsing(x => x.nagruzka_id);
-            Mapper.CreateMap<semester_all, semesterallDTO>()
-                .ForMember(dest => dest.nagruzka_all, opt => opt.MapFrom(src => src.nagruzka_all));
+            Mapper.CreateMap<semester_all, semesterallDTO>();
+                //.ForMember(dest => dest.nagruzka_all, opt => opt.MapFrom(src => src.nagruzka_all));
             Mapper.AssertConfigurationIsValid();
         }
         // GET api/Semesters
@@ -53,7 +53,7 @@ namespace API_Provider.Controllers
         public IHttpActionResult GetsemesterByYear(int yearNumber)
         {
             IEnumerable<semester_all> semester_all = db.semester_all.Where(x => x.year == yearNumber);
-            if (semester_all == null)
+            if (semester_all.Count() == 0)
             {
                 return NotFound();
             }
@@ -66,7 +66,7 @@ namespace API_Provider.Controllers
         public IHttpActionResult GetsemesterByYearAndPart(int yearNumber, int semesterNumber)
         {
             IEnumerable<semester_all> semester_all = db.semester_all.Where(x => x.year == yearNumber && x.part == semesterNumber).Take(10);
-            if (semester_all == null)
+            if (semester_all.Count() == 0)
             {
                 return NotFound();
             }
@@ -79,7 +79,7 @@ namespace API_Provider.Controllers
         public IHttpActionResult GetsemesterByPart(int semesterNumber)
         {
             IEnumerable<semester_all> semester_all = db.semester_all.Where(x => x.part == semesterNumber).Take(10);
-            if (semester_all == null)
+            if (semester_all.Count() == 0)
             {
                 return NotFound();
             }

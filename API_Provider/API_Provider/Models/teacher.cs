@@ -12,9 +12,9 @@ namespace API_Provider.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class teachers
+    public partial class teacher
     {
-        public teachers()
+        public teacher()
         {
             this.nagruzka_details = new HashSet<nagruzka_details>();
             this.nagruzka_other = new HashSet<nagruzka_other>();

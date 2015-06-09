@@ -501,7 +501,7 @@
           </Key>
           <Property Name="cathedra_type_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="cathedra" Relationship="Self.FK_cathedra_cathedra_type" FromRole="cathedra_type" ToRole="cathedra" />
+          <NavigationProperty Name="cathedras" Relationship="Self.FK_cathedra_cathedra_type" FromRole="cathedra_type" ToRole="cathedra" />
         </EntityType>
         <EntityType Name="faculty_all">
           <Key>
@@ -612,7 +612,7 @@
           <NavigationProperty Name="faculty_all" Relationship="Self.FK_nagruzka_details_faculty_all" FromRole="nagruzka_details" ToRole="faculty_all" />
           <NavigationProperty Name="nagruzka_norm" Relationship="Self.FK_nagruzka_details_nagruzka_norm" FromRole="nagruzka_details" ToRole="nagruzka_norm" />
           <NavigationProperty Name="nagruzka_type" Relationship="Self.FK_nagruzka_details_nagruzka_type" FromRole="nagruzka_details" ToRole="nagruzka_type" />
-          <NavigationProperty Name="teachers" Relationship="Self.FK_nagruzka_details_teachers" FromRole="nagruzka_details" ToRole="teachers" />
+          <NavigationProperty Name="teacher" Relationship="Self.FK_nagruzka_details_teachers" FromRole="nagruzka_details" ToRole="teachers" />
         </EntityType>
         <EntityType Name="nagruzka_norm">
           <Key>
@@ -655,7 +655,7 @@
           <Property Name="dip_sz" Type="Int32" Nullable="false" />
           <Property Name="dip_mz" Type="Int32" Nullable="false" />
           <NavigationProperty Name="faculty_all" Relationship="Self.FK_nagruzka_other_faculty_all" FromRole="nagruzka_other" ToRole="faculty_all" />
-          <NavigationProperty Name="teachers" Relationship="Self.FK_nagruzka_other_teachers" FromRole="nagruzka_other" ToRole="teachers" />
+          <NavigationProperty Name="teacher" Relationship="Self.FK_nagruzka_other_teachers" FromRole="nagruzka_other" ToRole="teachers" />
         </EntityType>
         <EntityType Name="nagruzka_type">
           <Key>
@@ -697,7 +697,7 @@
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="nagruzka_all" Relationship="Self.FK_nagruzka_all_semester_all" FromRole="semester_all" ToRole="nagruzka_all" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -707,7 +707,7 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="teachers">
+        <EntityType Name="teacher">
           <Key>
             <PropertyRef Name="teacher_id" />
           </Key>
@@ -743,7 +743,7 @@
         </Association>
         <Association Name="FK_teachers_cathedra">
           <End Role="cathedra" Type="Self.cathedra" Multiplicity="1" />
-          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <End Role="teachers" Type="Self.teacher" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cathedra">
               <PropertyRef Name="cathedra_id" />
@@ -803,7 +803,7 @@
         </Association>
         <Association Name="FK_teachers_faculty_all">
           <End Role="faculty_all" Type="Self.faculty_all" Multiplicity="1" />
-          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <End Role="teachers" Type="Self.teacher" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="faculty_all">
               <PropertyRef Name="faculty_id" />
@@ -862,7 +862,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_nagruzka_details_teachers">
-          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teacher" Multiplicity="1" />
           <End Role="nagruzka_details" Type="Self.nagruzka_details" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="teachers">
@@ -874,7 +874,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_nagruzka_other_teachers">
-          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="teachers" Type="Self.teacher" Multiplicity="1" />
           <End Role="nagruzka_other" Type="Self.nagruzka_other" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="teachers">
@@ -887,7 +887,7 @@
         </Association>
         <Association Name="FK_teachers_post_all">
           <End Role="post_all" Type="Self.post_all" Multiplicity="1" />
-          <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+          <End Role="teachers" Type="Self.teacher" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="post_all">
               <PropertyRef Name="post_id" />
@@ -897,9 +897,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VovksStudentEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VovksStudentEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admpost_all" EntityType="Self.admpost_all" />
-          <EntitySet Name="cathedra" EntityType="Self.cathedra" />
+          <EntitySet Name="cathedras" EntityType="Self.cathedra" />
           <EntitySet Name="cathedra_type" EntityType="Self.cathedra_type" />
           <EntitySet Name="faculty_all" EntityType="Self.faculty_all" />
           <EntitySet Name="faculty_type_all" EntityType="Self.faculty_type_all" />
@@ -911,14 +911,14 @@
           <EntitySet Name="nagruzka_type" EntityType="Self.nagruzka_type" />
           <EntitySet Name="post_all" EntityType="Self.post_all" />
           <EntitySet Name="semester_all" EntityType="Self.semester_all" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="teachers" EntityType="Self.teachers" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="teachers" EntityType="Self.teacher" />
           <AssociationSet Name="FK_cathedra_cathedra_type" Association="Self.FK_cathedra_cathedra_type">
             <End Role="cathedra_type" EntitySet="cathedra_type" />
-            <End Role="cathedra" EntitySet="cathedra" />
+            <End Role="cathedra" EntitySet="cathedras" />
           </AssociationSet>
           <AssociationSet Name="FK_teachers_cathedra" Association="Self.FK_teachers_cathedra">
-            <End Role="cathedra" EntitySet="cathedra" />
+            <End Role="cathedra" EntitySet="cathedras" />
             <End Role="teachers" EntitySet="teachers" />
           </AssociationSet>
           <AssociationSet Name="FK_faculty_all_faculty_type_all" Association="Self.FK_faculty_all_faculty_type_all">
@@ -975,7 +975,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VovksStudentModelStoreContainer" CdmEntityContainer="VovksStudentEntities1">
+        <EntityContainerMapping StorageEntityContainer="VovksStudentModelStoreContainer" CdmEntityContainer="VovksStudentEntities">
           <EntitySetMapping Name="admpost_all">
             <EntityTypeMapping TypeName="VovksStudentModel.admpost_all">
               <MappingFragment StoreEntitySet="admpost_all">
@@ -984,7 +984,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="cathedra">
+          <EntitySetMapping Name="cathedras">
             <EntityTypeMapping TypeName="VovksStudentModel.cathedra">
               <MappingFragment StoreEntitySet="cathedra">
                 <ScalarProperty Name="cathedra_id" ColumnName="cathedra_id" />
@@ -1188,7 +1188,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="VovksStudentModel.sysdiagrams">
+            <EntityTypeMapping TypeName="VovksStudentModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1199,7 +1199,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="teachers">
-            <EntityTypeMapping TypeName="VovksStudentModel.teachers">
+            <EntityTypeMapping TypeName="VovksStudentModel.teacher">
               <MappingFragment StoreEntitySet="teachers">
                 <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
                 <ScalarProperty Name="post_id" ColumnName="post_id" />
@@ -1230,7 +1230,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

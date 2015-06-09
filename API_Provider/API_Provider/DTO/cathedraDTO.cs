@@ -11,9 +11,10 @@ namespace API_Provider.DTO
         public int faculty_id { get; set; }
         public string nameshort { get; set; }
         public string name { get; set; }
-        public int cathedra_type_id { get; set; }
 
-        public int cathedra_type { get; set; }
-        public int[] teachers { get; set; }
+        //public int cathedra_type_id { get; set; }
+
+        //public int cathedra_type { get; set; }
+        //public int[] teachers { get; set; }
     }
 }

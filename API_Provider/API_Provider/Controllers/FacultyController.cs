@@ -17,7 +17,7 @@ namespace API_Provider.Controllers
     [RoutePrefix("api/Faculty")]
     public class FacultyController : ApiController
     {
-        private VovksStudentEntities1 db = new VovksStudentEntities1();
+        private VovksStudentEntities db = new VovksStudentEntities();
 
         public FacultyController()
         {
@@ -61,7 +61,7 @@ namespace API_Provider.Controllers
         {
             var x = name;
             var result = db.faculty_all.ToList().Where(text => text.name.Contains(name));
-            if (result == null)
+            if (result.Count() == 0)
             {
                 return NotFound();
             }

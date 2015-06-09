@@ -16,12 +16,12 @@ namespace API_Provider.Models
     {
         public post_all()
         {
-            this.teachers = new HashSet<teachers>();
+            this.teachers = new HashSet<teacher>();
         }
     
         public int post_id { get; set; }
         public string name { get; set; }
     
-        public virtual ICollection<teachers> teachers { get; set; }
+        public virtual ICollection<teacher> teachers { get; set; }
     }
 }
