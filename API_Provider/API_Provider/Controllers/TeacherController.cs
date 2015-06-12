@@ -57,25 +57,9 @@ namespace API_Provider.Controllers
 
         [Route("post/{post_id}")]
         [ResponseType(typeof(teacher))]
-        public IHttpActionResult GetteachersByPostId(int id)
+        public IHttpActionResult GetteachersByPostId(int post_id)
         {
-            var result = db.teachers.ToList().Where(teacher => teacher.post_id.Equals(id));
-
-            if (result.Count() == 0)
-            {
-                return NotFound();
-            }
-
-            var dto = Mapper.Map<IEnumerable<teacher>, IEnumerable<teachersDTO>>(result);
-
-            return Ok(dto);
-        }
-
-        [Route("rank/{rank_id}")]
-        [ResponseType(typeof(teacher))]
-        public IHttpActionResult GetteachersByRankId(int id)
-        {
-            var result = db.teachers.ToList().Where(teacher => teacher.rank.Equals(id));
+            var result = db.teachers.ToList().Where(teacher => teacher.post_id.Equals(post_id));
 
             if (result.Count() == 0)
             {
@@ -89,9 +73,9 @@ namespace API_Provider.Controllers
 
         [Route("rate/{rate_id}")]
         [ResponseType(typeof(teacher))]
-        public IHttpActionResult GetteachersByRateId(int id)
+        public IHttpActionResult GetteachersByRateId(int rate_id)
         {
-            var result = db.teachers.ToList().Where(teacher => teacher.rate.Equals(id));
+            var result = db.teachers.ToList().Where(teacher => teacher.rate.Equals(rate_id));
 
             if (result.Count() == 0)
             {
@@ -105,9 +89,9 @@ namespace API_Provider.Controllers
 
         [Route("cathedra/{cathedra_id}")]
         [ResponseType(typeof(teacher))]
-        public IHttpActionResult GetteachersByCathedraId(int id)
+        public IHttpActionResult GetteachersByCathedraId(int cathedra_id)
         {
-            var result = db.teachers.ToList().Where(teacher => teacher.cathedra_id.Equals(id));
+            var result = db.teachers.ToList().Where(teacher => teacher.cathedra_id.Equals(cathedra_id));
 
             if (result.Count() == 0)
             {
@@ -121,9 +105,9 @@ namespace API_Provider.Controllers
 
         [Route("faculty/{faculty_id}")]
         [ResponseType(typeof(teacher))]
-        public IHttpActionResult GetteachersByFacultyId(int id)
+        public IHttpActionResult GetteachersByFacultyId(int faculty_id)
         {
-            var result = db.teachers.ToList().Where(teacher => teacher.faculty_id.Equals(id));
+            var result = db.teachers.ToList().Where(teacher => teacher.faculty_id.Equals(faculty_id));
 
             if (result.Count() == 0)
             {
@@ -215,7 +199,7 @@ namespace API_Provider.Controllers
             return Ok(dto);
         }
 
-        [Route("cathedra/{cathedra_id}/post/rate/{rate_id}")]
+        [Route("cathedra/{cathedra_id}/rate/{rate_id}")]
         [ResponseType(typeof(teacher))]
         public IHttpActionResult GetteachersByCathedraRateId(int cathedra_id, int rate_id)
         {

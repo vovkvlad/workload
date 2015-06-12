@@ -19,4 +19,6 @@
     <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
 </form>
 
-<div class="gridStyle" ng-grid="gridOptions"></div>
+<preloader></preloader>
+
+<div class="gridStyle" ng-grid="gridOptions" ng-show="showTable"></div>

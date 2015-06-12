@@ -2,36 +2,49 @@
     <div class="row">
         <div class="input-field col s2">
             <input id="nagruzkaId" name="nagruzkaId" type="number" class="validate" ng-model="configRequest.nagruzkaId"/>
-            <label for="nagruzkaId">Id семестру</label>
+            <label for="nagruzkaId">Id навантаження</label>
         </div>
 
         <div class="input-field col s2">
             <input id="teacherId"  name="teacherId" type="number" ng-model="configRequest.teacherId"/>
-            <label for="teacherId">Рік</label>
+            <label for="teacherId">Id викладча</label>
         </div>
 
         <div class="input-field col s2">
             <input id="facultyId" name="facultyId" type="number" class="validate" ng-model="configRequest.facultyId" ng-blur="onBlur($event)"/>
-            <label for="facultyId">Номер семестру</label>
+            <label for="facultyId">Id факультету</label>
         </div>
 
         <div class="input-field col s2">
             <input id="courseName" name="courseName" type="text" class="validate" ng-model="configRequest.courseName" ng-blur="onBlur($event)"/>
-            <label for="courseName">Номер семестру</label>
+            <label for="courseName">Назва предмету</label>
         </div>
 
         <div class="input-field col s2">
             <input id="kursId" name="kursId" type="number" class="validate" ng-model="configRequest.kursId" ng-blur="onBlur($event)"/>
-            <label for="kursId">Номер семестру</label>
+            <label for="kursId">Номер курсу</label>
         </div>
 
         <div class="input-field col s2">
             <input id="semesterId" name="facultyId" type="number" class="validate" ng-model="configRequest.semesterId" ng-blur="onBlur($event)"/>
-            <label for="semesterId">Номер семестру</label>
+            <label for="semesterId">Id семестру</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s2 offset-s5">
+            <input id="yearId" name="facultyId" type="number" class="validate" ng-model="configRequest.yearId" ng-blur="onBlur($event)"/>
+            <label for="yearId">Рік</label>
         </div>
     </div>
 
     <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
 </form>
 
-<div class="gridStyle" ng-grid="gridOptions"></div>
+<preloader></preloader>
+
+<div class="row">
+    <div class="col s12">
+        <div class="gridStyle" ng-grid="gridOptions" ng-show="showTable"></div>
+    </div>
+</div>

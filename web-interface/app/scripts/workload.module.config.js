@@ -31,10 +31,10 @@ app.config(function($stateProvider, $urlRouterProvider, RestangularProvider){
             templateUrl: 'templates/cathedra.html',
             controller: 'CathedraController'
         })
-        .state('AdministrativePost', {
-            url: '/admpost',
-            templateUrl: 'templates/admpost.html',
-            controller: 'AdmpostController'
+        .state('Post', {
+            url: '/post',
+            templateUrl: 'templates/post.html',
+            controller: 'PostController'
         })
         .state('Nagruzka', {
             url: '/nagruzkaall',

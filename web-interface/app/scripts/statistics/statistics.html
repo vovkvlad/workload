@@ -1,0 +1,87 @@
+<form name="configForm" novalidate >
+    <div class="row">
+        <div class="input-field col s2">
+            <input id="facultyId" name="facultyId" type="number" class="validate" ng-model="configRequest.facultyId" ng-blur="onBlur($event)"/>
+            <label for="facultyId">Id факультету</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="cathedraId" name="cathedraId" type="number" class="validate" ng-model="configRequest.cathedraId" ng-blur="onBlur($event)"/>
+            <label for="cathedraId">Id кафедри</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="semesterId" name="facultyId" type="number" class="validate" ng-model="configRequest.semesterId" ng-blur="onBlur($event)"/>
+            <label for="semesterId">Id семестру</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="yearId" name="facultyId" type="number" class="validate" ng-model="configRequest.yearId" ng-blur="onBlur($event)"/>
+            <label for="yearId">Рік</label>
+        </div>
+
+        <div class="input-field col s4">
+            <div class="row">
+                <div class="col s6">
+                    <input id="lec" name="lec" type="checkbox" class="validate" ng-model="configRequest.type.lec" ng-blur="onBlur($event)"/>
+                    <label for="lec">Лекції</label>
+                </div>
+                <div class="col s6">
+                    <input id="sem" name="sem" type="checkbox" class="validate" ng-model="configRequest.type.sem" ng-blur="onBlur($event)"/>
+                    <label for="sem">Семінари</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <input id="lab" name="lab" type="checkbox" class="validate" ng-model="configRequest.type.lab" ng-blur="onBlur($event)"/>
+                    <label for="lab">Лабораторні</label>
+                </div>
+                <div class="col s6">
+                    <input id="kons" name="kons" type="checkbox" class="validate" ng-model="configRequest.type.kons" ng-blur="onBlur($event)"/>
+                    <label for="kons">Консультації</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <input id="exam" name="exam" type="checkbox" class="validate" ng-model="configRequest.type.exam" ng-blur="onBlur($event)"/>
+                    <label for="exam">Екзамени</label>
+                </div>
+                <div class="col s6">
+                    <input id="prac" name="prac" type="checkbox" class="validate" ng-model="configRequest.type.prac" ng-blur="onBlur($event)"/>
+                    <label for="prac">Практики</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s1">
+            <input id="posId1"  name="posId1" type="text" ng-model="configRequest.posId1"/>
+            <label for="posId1">Посада</label>
+        </div>
+        <div class="input-field col s1">
+            <input id="posId2"  name="posId2" type="text" ng-model="configRequest.posId2"/>
+            <label for="posId2">Посада</label>
+        </div>
+        <div class="input-field col s1">
+            <input id="posId3"  name="posId3" type="text" ng-model="configRequest.posId3"/>
+            <label for="posId3">Посада</label>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="rate" name="rate" type="number" class="validate" ng-model="configRequest.rate" ng-blur="onBlur($event)"/>
+            <label for="rate">Ставка</label>
+        </div>
+    </div>
+    <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
+</form>
+
+<preloader></preloader>
+
+<div class="row">
+    <div class="col s12">
+        <div class="gridStyle" ng-grid="gridOptions" ng-show="showTable"></div>
+    </div>
+</div>

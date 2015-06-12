@@ -16,6 +16,7 @@ module.exports = function(grunt) {
         copy: {
             debug: {
                 files: [
+                    {expand: true, cwd: 'app/vendor/', src: ['angular-ui-ng-grid-2.0.14/**/*'], dest: '<%= debugDir %>/vendor'},
                     {expand: true, cwd: 'app/vendor/materialize-src/', src: ['font/**'], dest: '<%= debugDir %>/vendor'},
                     {expand: true, cwd: 'app/vendor/materialize-src/', src: ['css/**'], dest: '<%= debugDir %>/vendor'},
                     {expand: true, cwd: 'app', src: 'index.html', dest: 'build/debug/'},

@@ -16,7 +16,7 @@ app.factory('RawInfoRetriever', function () {
         }
 
 
-        return rawObjects
+        return rawObjects;
     }
     return GetRawInfo;
 });

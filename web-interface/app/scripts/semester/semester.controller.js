@@ -1,44 +1,54 @@
-app.controller('SemesterController', ['$scope', 'SemestersService', 'Cacher', 'RawInfoRetriever',
-    function ($scope, SemesterService, Cacher, RawInfoRetriever) {
+app.controller('SemesterController', ['$scope', 'SemestersService', 'Cacher', 'RawInfoRetriever', 'Resizer',
+    function ($scope, SemesterService, Cacher, RawInfoRetriever, Resizer) {
 
-    $scope.title.text = 'Семестри';
-    $scope.semesterData = Cacher.semesters ? Cacher.semesters : [];
-    $scope.configRequest = {};
+        $scope.title.text = 'Семестри';
+        $scope.semesterData = Cacher.semesters ? Cacher.semesters : [];
+        $scope.configRequest = {};
 
+        $scope.showLoader = false;
+        $scope.showTable = Cacher.semesters ? true : false;
 
-    $scope.fetch = function () {
-        if ($scope.configRequest.semesterId) {
-            SemesterService.getOne($scope.configRequest.semesterId).then(function (semesters) {
-                $scope.semesterData = RawInfoRetriever(semesters);
-                Cacher.semesters = $scope.semesterData;
-            });
-        } else if ($scope.configRequest.year && $scope.configRequest.semesterNumber) {
-            SemesterService.getYearAndSemester($scope.configRequest.year, $scope.configRequest.semesterNumber).then(function (semesters) {
-                $scope.semesterData = RawInfoRetriever(semesters);
-                Cacher.semesters = $scope.semesterData;
-            });
-        } else if ($scope.configRequest.year) {
-            SemesterService.getYear($scope.configRequest.year).then(function (semesters) {
-                $scope.semesterData = RawInfoRetriever(semesters);
-                Cacher.semesters = $scope.semesterData;
-            });
-        } else if ($scope.configRequest.semesterNumber) {
-            SemesterService.getSemesterPart($scope.configRequest.semesterNumber).then(function (semesters) {
-                $scope.semesterData = RawInfoRetriever(semesters);
-                Cacher.semesters = $scope.semesterData;
-            });
-        } else {
-            SemesterService.getAll().then(function (semesters) {
-                $scope.semesterData = RawInfoRetriever(semesters);
-                Cacher.semesters = $scope.semesterData;
-            });
+        function RecieveCallBack (data) {
+            $scope.semesterData = RawInfoRetriever(data);
+            Cacher.semesters = $scope.semesterData;
+
+            $scope.showLoader = false;
+            $scope.showTable = true;
+
+            Resizer();
         }
-    };
 
-    $scope.onBlur = function (event) {
-    };
+        $scope.fetch = function () {
+            $scope.showLoader = true;
 
-    $scope.gridOptions = {
-        data: 'semesterData'
-    };
-}]);
+            if ($scope.configRequest.semesterId) {
+                SemesterService.getOne($scope.configRequest.semesterId).then(function (data) {
+                    RecieveCallBack(data);
+                });
+            } else if ($scope.configRequest.year && $scope.configRequest.semesterNumber) {
+                SemesterService.getYearAndSemester($scope.configRequest.year, $scope.configRequest.semesterNumber).then(function (data) {
+                    RecieveCallBack(data);
+                });
+            } else if ($scope.configRequest.year) {
+                SemesterService.getYear($scope.configRequest.year).then(function (data) {
+                    RecieveCallBack(data);
+                });
+            } else if ($scope.configRequest.semesterNumber) {
+                SemesterService.getSemesterPart($scope.configRequest.semesterNumber).then(function (data) {
+                    RecieveCallBack(data);
+                });
+            } else {
+                SemesterService.getAll().then(function (data) {
+                    RecieveCallBack(data);
+                });
+            }
+        };
+
+        $scope.onBlur = function (event) {
+        };
+
+        $scope.gridOptions = {
+            data: 'semesterData',
+            enableColumnResize: true
+        };
+    }]);

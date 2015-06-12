@@ -107,12 +107,14 @@
     <Compile Include="Controllers\NagruzkaAllController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SemestersController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="DTO\cathedraDTO.cs" />
     <Compile Include="DTO\facultyDTO.cs" />
     <Compile Include="DTO\nagruzkaAllDTO.cs" />
     <Compile Include="DTO\postDTO.cs" />
     <Compile Include="DTO\semesterallDTO.cs" />
+    <Compile Include="DTO\statisticsDTO.cs" />
     <Compile Include="DTO\teachersDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

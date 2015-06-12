@@ -8,13 +8,15 @@
     <script src="vendor/js/materialize.min.js"></script>
     <script src="../../node_modules/lodash/index.js"></script>
     <script src="../../node_modules/angular/angular.js"></script>
-    <script src="../../node_modules/ng-grid/build/ng-grid.js"></script>
     <script src="../../node_modules/ng-grid/plugins/ng-grid-flexible-height.js"></script>
+    <!--<script src="../../node_modules/ng-grid/build/ng-grid.js"></script>-->
     <script src="../../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-ui-ng-grid-2.0.14/ng-grid.js"></script>
     <script src="../../node_modules/restangular/dist/restangular.js"></script>
     <script src="app.js"></script>
     <link href="vendor/css/materialize.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../node_modules/ng-grid/ng-grid.css"/>
+    <!--<link rel="stylesheet" href="../../node_modules/ng-grid/ng-grid.css"/>-->
+    <link rel="stylesheet" href="vendor/angular-ui-ng-grid-2.0.14/ng-grid.css"/>
     <link href="app.css" rel="stylesheet">
 </head>
 <body ng-controller="MainController">
@@ -37,12 +39,13 @@
                 <a class="collection-item" ui-sref="Faculty" ui-sref-active="active">Факультети</a>
                 <a class="collection-item" ui-sref="Cathedra" ui-sref-active="active">Кафедри</a>
                 <a class="collection-item" ui-sref="Teachers" ui-sref-active="active">Вчителі</a>
-                <a class="collection-item" ui-sref="AdministrativePost" ui-sref-active="active">Посада</a>
+                <a class="collection-item" ui-sref="Post" ui-sref-active="active">Посада</a>
                 <a class="collection-item" ui-sref="Semesters" ui-sref-active="active">Семестри</a>
                 <a class="collection-item" ui-sref="Nagruzka" ui-sref-active="active">Дані по навантаженню</a>
                 <a class="collection-item" ui-sref="Statistics" ui-sref-active="active">Статистика</a>
             </div>
         </div>
+
         <div class="col s10 offset-s2" ui-view></div>
     </div>
 </main>
