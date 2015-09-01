@@ -189,25 +189,96 @@ namespace API_Provider.Controllers
             int semester2 = semesters[1].semester_id;
 
             List<statisticsDTO> result = new List<statisticsDTO>();
+            List<statisticsDTO> result1 = new List<statisticsDTO>();
+            List<statisticsDTO> result2 = new List<statisticsDTO>();
+            List<statisticsDTO> result3 = new List<statisticsDTO>();
+            List<statisticsDTO> result4 = new List<statisticsDTO>();
+
+
             var tmp = (from n in db.nagruzka_all
                        join t in db.teachers on n.teacher_id equals t.teacher_id
                        where n.faculty_id == faculty_id && (n.semester_id == semester1 || n.semester_id == semester2)
                        && t.rate == rate_id && (t.post_id == 1 || t.post_id == 6 || t.post_id == 7)
                        select n).GroupBy(x => x.teacher_id);
 
+            var tmp2 = (from n in db.nagruzka_all
+                        join t in db.teachers on n.teacher_id equals t.teacher_id
+                        where n.faculty_id == faculty_id && (n.semester_id == semester1 || n.semester_id == semester2)
+                        && t.rate == rate_id && (t.post_id == 6 || t.post_id == 7)
+                        select n).GroupBy(x => x.teacher_id);
+
+            var tmp3 = (from n in db.nagruzka_all
+                        join t in db.teachers on n.teacher_id equals t.teacher_id
+                        where n.faculty_id == faculty_id && (n.semester_id == semester1 || n.semester_id == semester2)
+                        && t.rate == rate_id && (t.post_id == 6)
+                        select n).GroupBy(x => x.teacher_id);
+
+            var tmp4 = (from n in db.nagruzka_all
+                        join t in db.teachers on n.teacher_id equals t.teacher_id
+                        where n.faculty_id == faculty_id && (n.semester_id == semester1 || n.semester_id == semester2)
+                        && t.rate == rate_id && (t.post_id == 1)
+                        select n).GroupBy(x => x.teacher_id);
+
+            var tmp5 = (from n in db.nagruzka_all
+                        join t in db.teachers on n.teacher_id equals t.teacher_id
+                        where n.faculty_id == faculty_id && (n.semester_id == semester1 || n.semester_id == semester2)
+                        && t.rate == rate_id && (t.post_id == 7)
+                        select n).GroupBy(x => x.teacher_id);
+
             foreach (var t in tmp)
             {
                 int sum = t.Sum(f => f.lec + f.lab + f.sem + f.kons + f.exam + f.prac);
                 int teacherId = t.ElementAt(0).teacher_id;
-                result.Add(new statisticsDTO(teacherId, sum));
+                statisticsDTO dtoobj = new statisticsDTO(teacherId, sum);
+                dtoobj.post = "167";
+                result.Add(dtoobj);
             }
+            foreach (var t in tmp2)
+            {
+                int sum = t.Sum(f => f.lec + f.lab + f.sem + f.kons + f.exam + f.prac);
+                int teacherId = t.ElementAt(0).teacher_id;
+                statisticsDTO dtoobj = new statisticsDTO(teacherId, sum);
+                dtoobj.post = "67";
+                result1.Add(dtoobj);
+            }
+            foreach (var t in tmp3)
+            {
+                int sum = t.Sum(f => f.lec + f.lab + f.sem + f.kons + f.exam + f.prac);
+                int teacherId = t.ElementAt(0).teacher_id;
+                statisticsDTO dtoobj = new statisticsDTO(teacherId, sum);
+                dtoobj.post = "6";
+                result2.Add(dtoobj);
+            }
+            foreach (var t in tmp4)
+            {
+                int sum = t.Sum(f => f.lec + f.lab + f.sem + f.kons + f.exam + f.prac);
+                int teacherId = t.ElementAt(0).teacher_id;
+                statisticsDTO dtoobj = new statisticsDTO(teacherId, sum);
+                dtoobj.post = "1";
+                result3.Add(dtoobj);
+            }
+            foreach (var t in tmp5)
+            {
+                int sum = t.Sum(f => f.lec + f.lab + f.sem + f.kons + f.exam + f.prac);
+                int teacherId = t.ElementAt(0).teacher_id;
+                statisticsDTO dtoobj = new statisticsDTO(teacherId, sum);
+                dtoobj.post = "7";
+                result4.Add(dtoobj);
+            }
+
+            List<List<statisticsDTO>> final = new List<List<statisticsDTO>>();
+            final.Add(result);
+            final.Add(result1);
+            final.Add(result2);
+            final.Add(result3);
+            final.Add(result4);
 
             if (result.Count() == 0)
             {
                 return NotFound();
             }
 
-            return Ok(result);
+            return Ok(final);
         }
 
         [Route("faculty/{faculty_id}/semester/{semester_id}/rate/{rate_id?}")]

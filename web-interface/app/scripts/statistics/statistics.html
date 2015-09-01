@@ -75,7 +75,16 @@
             <label for="rate">Ставка</label>
         </div>
     </div>
-    <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
+    <div class="row">
+        <div class="col s2 offset-s2">
+            <button class="btn waves-effect waves-light" ng-click="fetch()">Відправити запит</button>
+        </div>
+
+        <div class="col s4">
+            <input id="showTable"  name="posId1" type="checkbox" ng-model="showTable"/>
+            <label for="showTable">Відобразити результати запиту</label>
+        </div>
+    </div>
 </form>
 
 <preloader></preloader>
@@ -83,5 +92,50 @@
 <div class="row">
     <div class="col s12">
         <div class="gridStyle" ng-grid="gridOptions" ng-show="showTable"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <h5>Радіофізичний факультет 2013 рік (ФРЕКС)</h5>
+        <d3-bars data="d3Data"></d3-bars>
+    </div>
+</div>
+
+<div class="row" ng-show="d3DataProf">
+    <div class="col s12">
+        <h4>Професори:</h4>
+        <h5>Радіофізичний факультет 2013 рік (ФРЕКС)</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col s8">
+        <d3-bars data="d3DataProf" edgemin="profEdgeMin" edgemax="profEdgeMax"></d3-bars>
+    </div>
+</div>
+
+
+<div class="row" ng-show="d3DataAs">
+    <div class="col s12">
+        <h4>Асистенти:</h4>
+        <h5>Радіофізичний факультет 2013 рік (ФРЕКС)</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col s8">
+        <d3-bars data="d3DataAs" edgemin="AsEdgeMin" edgemax="AsEdgeMax"></d3-bars>
+    </div>
+</div>
+
+
+<div class="row" ng-show="d3DataDoc">
+    <div class="col s12">
+        <h4>Доценти:</h4>
+        <h5>Радіофізичний факультет 2013 рік (ФРЕКС)</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col s8">
+        <d3-bars data="d3DataDoc" edgemin="docEdgeMin" edgemax="docEdgeMax"></d3-bars>
     </div>
 </div>

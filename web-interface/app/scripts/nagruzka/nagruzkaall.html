@@ -1,13 +1,13 @@
 <form name="configForm" novalidate >
     <div class="row">
-        <div class="input-field col s2">
+        <!--<div class="input-field col s2">
             <input id="nagruzkaId" name="nagruzkaId" type="number" class="validate" ng-model="configRequest.nagruzkaId"/>
             <label for="nagruzkaId">Id навантаження</label>
-        </div>
+        </div>-->
 
         <div class="input-field col s2">
             <input id="teacherId"  name="teacherId" type="number" ng-model="configRequest.teacherId"/>
-            <label for="teacherId">Id викладча</label>
+            <label for="teacherId">Id викладaча</label>
         </div>
 
         <div class="input-field col s2">
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <button class="btn waves-effect waves-light" ng-click="fetch()">Fetch me!!</button>
+    <button class="btn waves-effect waves-light" ng-click="fetch()">Відправити запит</button>
 </form>
 
 <preloader></preloader>

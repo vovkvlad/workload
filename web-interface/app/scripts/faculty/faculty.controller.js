@@ -35,9 +35,6 @@ app.controller('FacultyController', ['$scope', 'FacultyService', 'Cacher', 'RawI
             }
         };
 
-        $scope.onBlur = function (event) {
-        };
-
         $scope.gridOptions = {
             data: 'Data',
             enableColumnResize: true

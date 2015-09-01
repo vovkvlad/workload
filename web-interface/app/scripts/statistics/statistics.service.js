@@ -37,5 +37,5 @@ app.factory('StatisticsService', function (Restangular) {
         getByCathedraYearRatePost: function (cathedra_id, year, rate, post1, post2, post3) {
             return service.one('cathedra', cathedra_id).one('year', year).one('rate', rate).one('post', post1).one('', post2).one('', post3).get();
         }
-    }
+    };
 });

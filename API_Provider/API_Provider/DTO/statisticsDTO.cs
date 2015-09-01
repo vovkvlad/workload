@@ -15,5 +15,6 @@ namespace API_Provider.DTO
 
         public int teacher;
         public int Sum;
+        public string post;
     }
 }

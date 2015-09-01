@@ -1,7 +1,7 @@
 app.controller('TeacherController', ['$scope', 'TeacherService', 'Cacher', 'RawInfoRetriever', 'Resizer',
     function ($scope, TeacherService, Cacher, RawInfoRetriever, Resizer) {
 
-        $scope.title.text = 'Вчителі';
+        $scope.title.text = 'Викладачі';
 
         $scope.teacherData = Cacher.teachers ? Cacher.teachers : [];
         $scope.configRequest = {};

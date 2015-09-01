@@ -55,5 +55,5 @@ app.factory('NagruzkaService', function (Restangular) {
         getByTeacherSemeterKurs: function (teacherId, semesterId, kursNumber) {
             return service.one('teacher', teacherId).one('semester', semesterId).one('kurs', kursNumber).get();
         }
-    }
+    };
 });

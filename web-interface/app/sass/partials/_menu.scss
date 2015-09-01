@@ -6,6 +6,12 @@
   padding-left: 0 !important;
   background: map-get($grey, lighten-4);
 
+  .menu-logo {
+    h1 {
+      font-size: 2rem !important;
+    }
+  }
+
   .collection {
     border: none;
     margin-top: 0;
